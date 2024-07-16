@@ -1,4 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withSerwistInit from '@serwist/next';
 
-export default nextConfig;
+const withSerwist = withSerwistInit({
+  swSrc: 'app/sw.ts',
+  swDest: 'public/sw.js',
+});
+
+const nextConfig = {
+  images: {
+    domains: ['images.unsplash.com'],
+  },
+};
+
+export default withSerwist(nextConfig);
