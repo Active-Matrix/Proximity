@@ -10,6 +10,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@artimisjs/ui": "^0.1.12",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@serwist/next": "^9.0.3",
