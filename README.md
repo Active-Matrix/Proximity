@@ -9,47 +9,28 @@
 
 [Read the guide](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
 
-## Using this example
+# Workspace setup
 
-Run the following command:
+### Prerequisites
 
-```sh
-npx create-turbo@latest
-```
+- nvm@latest
+- nodejs 18.x, 20.x
+- pnpm@latest
+- vscode@latest
+- python
 
-## What's inside?
+### Install these VS Code extension:
 
-This Turborepo includes the following packages/apps:
+[Monorepo Workspace](https://marketplace.visualstudio.com/items?itemName=folke.vscode-monorepo-workspace)
+[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Using CLI
 
-### Utilities
+### Start web app `pnpm dev:web`
 
-This Turborepo has some additional tools already setup for you:
+### Build web app `pnpm build:web`
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
+# Remote Caching
 
 Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
