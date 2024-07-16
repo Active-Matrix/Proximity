@@ -7,8 +7,27 @@ const withSerwist = withSerwistInit({
 
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com'],
-  },
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.freepik.com',
+        port: '',
+        pathname: '/**',
+      }
+    ]
+  }
 };
 
 export default withSerwist(nextConfig);
