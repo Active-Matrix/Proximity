@@ -4,10 +4,14 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi ",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test": "turbo run test"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11",
     "prettier": "^3.2.5",
     "turbo": "^2.0.6",
     "typescript": "^5.4.5"
