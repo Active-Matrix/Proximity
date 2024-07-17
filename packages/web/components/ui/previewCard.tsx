@@ -1,7 +1,7 @@
 import { Card, Column, Row } from '@artimisjs/ui';
 import { Text } from './text';
 import Image from 'next/image';
-import React, { Fragment } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 interface PreviewCardProps {
