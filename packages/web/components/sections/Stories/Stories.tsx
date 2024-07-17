@@ -1,6 +1,7 @@
 import { Column, Row } from '@artimisjs/ui';
 import StoryAvatar from '@/components/ui/storyAvatar';
 import StoryOverview from './StoryOverview';
+import HorizontalScroll from '@/components/ui/horizontalScroll';
 
 const Stories = () => {
   const stories = [
@@ -28,13 +29,13 @@ const Stories = () => {
   ];
   return (
     <Column align="start" className="gap-4">
-      <Row className="w-screen overflow-x-scroll">
-        <Row className="flex justify-center items-center gap-4 whitespace-nowrap px-2">
+      <HorizontalScroll>
+        <Row className="flex justify-center items-center gap-4 px-2">
           {stories.map((story) => (
-            <StoryAvatar src={story.src} alt={story.name} />
+            <StoryAvatar src={story.src} alt={story.name} key={story.name} />
           ))}
         </Row>
-      </Row>
+      </HorizontalScroll>
       <StoryOverview />
     </Column>
   );
