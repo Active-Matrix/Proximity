@@ -21,10 +21,14 @@ const PreviewCard = ({
 }: PreviewCardProps) => {
   return (
     <Link href={href}>
-      <Card width="full" height="fit" className="bg-transparent p-2">
+      <Card
+        width="full"
+        height="fit"
+        className="bg-transparent p-2 flex-center"
+      >
         <Row
           align="center"
-          className="p-2 rounded-[1.5rem] justify-start shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] gap-2"
+          className="p-2 rounded-[1.5rem] justify-start shadow-[rgba(0,_0,_0,_0.24)_0px_1px_8px] gap-2"
         >
           <Image
             src={src}
@@ -34,10 +38,10 @@ const PreviewCard = ({
             className="h-32 w-32 rounded-[1rem] object-cover object-center"
           />
 
-          <Column align="start">
+          <Column className="h-28 w-full justify-between">
             <Text
-              className="p-1 line-clamp-3 overflow-hidden font-semibold"
-              size="lg"
+              className="p-1 line-clamp-3 overflow-hidden font-semibold text-[#343434]"
+              size="md"
             >
               {title}
             </Text>

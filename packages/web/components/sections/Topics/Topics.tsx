@@ -21,7 +21,7 @@ const Topics = () => {
               onClick={() => setSelected(topic)}
             >
               <Text
-                size="md"
+                size="sm"
                 className={`
                 ${selected === topic ? 'text-white' : 'text-black'}
                 font-semibold`}

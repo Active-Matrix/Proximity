@@ -26,7 +26,7 @@ const sizes = {
     lineHeight: 22 / 14,
   },
   md: {
-    fontSize: 16,
+    fontSize: 16.5,
     lineHeight: 20 / 14,
   },
   lg: {

@@ -1,5 +1,5 @@
 import { Column, Row } from '@artimisjs/ui';
-import StoryAvatar from '@/components/ui/storyAvatar';
+import StoryAvatar from './storyAvatar';
 import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
 
