@@ -9,6 +9,7 @@ import '@/styles/globals.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import { Header } from '@/components/sections';
+import BottomBar from '@/components/sections/BottomBar/BottomBar';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -30,12 +31,13 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen max-w-[100vw] overflow-x-hidden bg-background font-sans antialiased md:w-[40vw]',
+          'min-h-screen max-w-[100vw] relative overflow-x-hidden bg-background font-sans antialiased md:w-[40vw]',
           fontSans.variable
         )}
       >
         <Header />
         {children}
+        <BottomBar />
       </body>
     </html>
   );

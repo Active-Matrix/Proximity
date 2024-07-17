@@ -16,12 +16,12 @@ const Topics = () => {
               key={topic}
               align="center"
               className={`
-                ${selected === topic ? 'bg-black' : 'bg-[#F2F4F7] border-[2px] border-[#DFDFDF]'}
+                ${selected === topic ? 'bg-black' : 'bg-[#F2F4F7] border-[2px]'} border-[#DFDFDF]'}
                 p-2 px-5 rounded-[30px] gap-1`}
               onClick={() => setSelected(topic)}
             >
               <Text
-                size="lg"
+                size="md"
                 className={`
                 ${selected === topic ? 'text-white' : 'text-black'}
                 font-semibold`}

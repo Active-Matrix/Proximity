@@ -18,7 +18,7 @@ type TextProps = {
 
 const sizes = {
   xs: {
-    fontSize: 12,
+    fontSize: 13,
     lineHeight: 20 / 12,
   },
   sm: {
@@ -27,7 +27,7 @@ const sizes = {
   },
   md: {
     fontSize: 16,
-    lineHeight: 24 / 16,
+    lineHeight: 20 / 14,
   },
   lg: {
     fontSize: 18,
