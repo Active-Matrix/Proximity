@@ -97,3 +97,7 @@ body {
     justify-content: start;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}

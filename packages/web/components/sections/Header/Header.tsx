@@ -8,8 +8,8 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <header className="px-4 pt-2 flex flex-col gap-4">
-      <Row align="center" className="justify-between w-full">
+    <header className="px-2 pt-2 pb-1 flex flex-col gap-4">
+      <Row align="center" className="justify-between w-full px-2">
         <Text size="xxxl" className="font-semibold">
           News Now
         </Text>
