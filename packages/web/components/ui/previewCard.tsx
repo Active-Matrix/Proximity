@@ -28,7 +28,7 @@ const PreviewCard = ({
       >
         <Row
           align="center"
-          className="p-2 bg-accent border-b-2 justify-start s gap-2"
+          className="py-2 pb-3 bg-accent border-b-2 justify-start s gap-2"
         >
           <Image
             src={src}
@@ -38,7 +38,7 @@ const PreviewCard = ({
             className="h-32 w-32 rounded-2xl object-cover object-center"
           />
 
-          <Column className="h-28 w-full justify-between">
+          <Column className="h-32 pb-2 w-full justify-between">
             <Text
               className="p-1 line-clamp-3 overflow-hidden font-semibold text-[#343434]"
               size="md"
