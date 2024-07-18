@@ -1,5 +1,4 @@
 import { NewsPreview, Stories, Topics, Header } from '@/components/sections';
-import { Column } from '@artimisjs/ui';
 
 export default function Home() {
   return (
