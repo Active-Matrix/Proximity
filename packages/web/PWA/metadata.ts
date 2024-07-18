@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
-const APP_NAME = 'Project News App';
-const APP_DEFAULT_TITLE = 'Project News App';
+const APP_NAME = 'Proximity';
+const APP_DEFAULT_TITLE = 'Proximity';
 const APP_TITLE_TEMPLATE = '%s - PWA App';
 const APP_DESCRIPTION = 'News App';
 
