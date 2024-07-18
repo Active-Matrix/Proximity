@@ -1,7 +1,5 @@
 import React from 'react';
 import { Card, Row, Text } from '@artimisjs/ui';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import Image, { StaticImageData } from 'next/image';
 import StoryBookMark from './StoryBookMark';
 
