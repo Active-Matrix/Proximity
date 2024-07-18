@@ -10,14 +10,14 @@ const Topics = () => {
   return (
     <section className="mt-4 w-screen overflow-x-hidden">
       <HorizontalScroll>
-        <Row className="flex justify-center items-center gap-2 px-2">
+        <Row className="flex justify-center items-center gap-2 px-2 pr-20">
           {topics.map((topic) => (
             <Row
               key={topic}
               align="center"
               className={`
-                ${selected === topic ? 'bg-black' : 'bg-[#F2F4F7] border-[2px]'} border-[#DFDFDF]'}
-                p-2 px-5 rounded-[30px] gap-1`}
+                ${selected === topic ? 'bg-black border-black' : 'bg-accent border-[#DFDFDF]'}
+                p-2 px-5 rounded-[30px] gap-1 transition-all duration-300 border-[1px] select-none`}
               onClick={() => setSelected(topic)}
             >
               <Text

@@ -1,5 +1,5 @@
 import { myMetadata, myViewport } from '@/PWA/index';
-import { Inter as FontSans } from 'next/font/google';
+import { Space_Grotesk as FontSans } from 'next/font/google';
 import { config } from '@fortawesome/fontawesome-svg-core';
 
 import { cn } from '@/lib/utils';
@@ -8,7 +8,6 @@ import '@artimisjs/ui/style';
 import '@/styles/globals.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-import { Header } from '@/components/sections';
 import BottomBar from '@/components/sections/BottomBar/BottomBar';
 
 const fontSans = FontSans({
@@ -31,11 +30,10 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen max-w-[100vw] relative overflow-x-hidden bg-background font-sans antialiased md:w-[40vw]',
+          'min-h-screen max-w-[100vw] relative overflow-x-hidden font-sans antialiased md:w-[40vw]',
           fontSans.variable
         )}
       >
-        <Header />
         {children}
         <BottomBar />
       </body>

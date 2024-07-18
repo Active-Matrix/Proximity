@@ -7,7 +7,7 @@ import React from 'react';
 const StoryOverview = () => {
   return (
     <Column className="gap-2 px-2">
-      <Card height="fit" width="full" radius="xxxl" className="h-[26vh]">
+      <Card height="fit" width="full" radius="xxl" className="h-[26vh]">
         <Card.Backdrop className="h-full w-full">
           <Image
             src="https://ik.imagekit.io/geeekg65rf/Create%20a%20modern%20258f9269-c684-4e8c-b941-d5a803ed8f77.png?updatedAt=1721231099572"
@@ -19,7 +19,7 @@ const StoryOverview = () => {
         </Card.Backdrop>
 
         <Card.Header className="p-4 top-0 flex justify-between items-center w-full">
-          <Row align="center" className="bg-white p-2 px-5 rounded-[1rem]">
+          <Row align="center" className="bg-white p-2 px-5 rounded-3xl">
             <FontAwesomeIcon
               icon={faBookmark}
               className="text-black"
@@ -27,10 +27,7 @@ const StoryOverview = () => {
             />
           </Row>
 
-          <Row
-            align="center"
-            className="bg-white p-2 px-5 rounded-[1rem] gap-1"
-          >
+          <Row align="center" className="bg-white p-2 px-5 rounded-3xl gap-1">
             <Text size="lg" className="font-semibold">
               CBC
             </Text>
@@ -50,7 +47,10 @@ const StoryOverview = () => {
           <Text className="text-white font-semibold">12 min read</Text>
         </Card.Footer>
       </Card>
-      <Text size="lg" className="px-2 font-semibold line-clamp-2">
+      <Text
+        size="lg"
+        className="px-2 text-[#1e1e1e] font-semibold line-clamp-2"
+      >
         A hypothetical point in time when artificial intelligence (AI) surpasses
         human capabilities
       </Text>
