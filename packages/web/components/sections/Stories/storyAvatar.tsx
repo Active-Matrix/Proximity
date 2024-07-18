@@ -9,7 +9,7 @@ interface StoryAvatarProps {
 
 const StoryAvatar = ({ src, alt }: StoryAvatarProps) => {
   return (
-    <Row className="h-[70px] w-[70px] border-[2px] border-[#DBDBDB] rounded-full overflow-hidden">
+    <Row className="h-[70px] w-[70px] border border-[#DBDBDB] rounded-full overflow-hidden">
       <Image
         src={src}
         alt={alt}
