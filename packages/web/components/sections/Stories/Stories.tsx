@@ -14,16 +14,13 @@ const Stories = () => {
   const [selectedSource, setSelectedSource] = useState<StoryType>();
 
   useEffect(() => {
-    async () => {
-      const res = await getAllStories();
+    getAllStories().then((res) => {
       setStories(res);
-    };
-
-    const Source = stories?.find((story) => story.id === selectedSourceID);
-    if (Source) {
-      setSelectedSource(Source);
-      setSelectedSource(Source);
-    }
+      const Source = stories?.find((story) => story.id === selectedSourceID);
+      if (Source) {
+        setSelectedSource(Source);
+      }
+    });
   }, [selectedSourceID]);
 
   return (
