@@ -22,7 +22,7 @@ const NewsPreview = () => {
     {
       title:
         'Advancements in Fission Reactor Technology: Powering the Future with Nuclear Energy',
-      src: 'https://ik.imagekit.io/geeekg65rf/image.png',
+      src: 'https://ik.imagekit.io/geeekg65rf/image.pngGYGOGNYO',
       tags: ['Future', 'Fission'],
       readTime: 8,
       href: '#',
@@ -36,7 +36,7 @@ const NewsPreview = () => {
     },
     {
       title: 'GPT-4: A Bigger, Better, Faster, Stronger Model for OpenAI',
-      src: 'https://ik.imagekit.io/geeekg65rf/image(1).png',
+      src: 'https://ik.imagekit.io/geeekg65rf/imageEDTURYFUGHJ.png',
       tags: ['AI', 'GPT-4'],
       readTime: 7,
       href: '#',
