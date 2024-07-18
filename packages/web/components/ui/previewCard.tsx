@@ -35,7 +35,7 @@ const PreviewCard = ({
             alt=""
             height={120}
             width={120}
-            className="h-32 w-32 rounded-2xl object-cover object-center"
+            className="h-32 min-w-32 w-32 rounded-2xl object-cover object-center"
           />
 
           <Column className="h-32 pb-2 w-full justify-between">
