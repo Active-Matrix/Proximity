@@ -1,49 +1,38 @@
+'use client';
 import { Column, Row } from '@artimisjs/ui';
 import StoryAvatar from './storyAvatar';
 import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
+import { useContext, useEffect, useState } from 'react';
+import { GlobalContext } from '@/config/contextManager';
+import { StoryType } from '@/types';
+import { getAllStories } from '@/utils/index';
 
 const Stories = () => {
-  const stories = [
-    {
-      name: 'CNN',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector.png',
-      id: 'BOuiy078VO',
-    },
+  const { selectedSourceID } = useContext(GlobalContext);
+  const [stories, setStories] = useState<StoryType[]>();
+  const [selectedSource, setSelectedSource] = useState<StoryType>();
 
-    {
-      name: 'Medium',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector-1.png',
-      id: 'U78IOOLIGHGH',
-    },
-    {
-      name: 'Newyork Times',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector-2.png',
-      id: 'OIUYG087OUy',
-    },
-    {
-      name: 'Dev',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector-3.png',
-      id: '09IUOGH65',
-    },
-    {
-      name: 'CNN',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector-6.png',
-      id: 'OIUH078',
-    },
-    {
-      name: 'Medium',
-      src: 'https://ik.imagekit.io/geeekg65rf/Vector-5.png',
-      id: 'E12OUYg',
-    },
-  ];
+  useEffect(() => {
+    async () => {
+      const res = await getAllStories();
+      setStories(res);
+    };
+
+    const Source = stories?.find((story) => story.id === selectedSourceID);
+    if (Source) {
+      setSelectedSource(Source);
+      setSelectedSource(Source);
+    }
+  }, [selectedSourceID]);
+
   return (
     <Column align="start" className="gap-4">
       <HorizontalScroll>
         <Row className="flex justify-center items-center gap-2 px-2">
-          {stories.map((story, index) => (
+          {stories?.map((story, index) => (
             <StoryAvatar
-              src={story.src}
+              avatar={story.avatar}
               name={story.name}
               id={story.id}
               key={story.name}
@@ -52,7 +41,16 @@ const Stories = () => {
           ))}
         </Row>
       </HorizontalScroll>
-      <StoryOverview />
+      {selectedSource && (
+        <StoryOverview
+          coverImage={selectedSource.stories[0].coverImage}
+          sourceAvatar={selectedSource.avatar}
+          sourceName={selectedSource.code}
+          storyTitle={selectedSource.stories[0].title}
+          storyTags={selectedSource.stories[0].tags}
+          storyReadTime={selectedSource.stories[0].readTime}
+        />
+      )}
     </Column>
   );
 };

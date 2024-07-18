@@ -15,7 +15,10 @@ const StoryHeader: React.FC<StoryHeaderProps> = ({
   <Card.Header className="p-4 top-0 flex justify-between items-center w-full">
     <StoryBookMark />
 
-    <Row align="center" className="bg-white p-2 px-5 rounded-3xl gap-1">
+    <Row
+      align="center"
+      className="bg-white p-2 px-5 rounded-3xl gap-1 w-24 h-10"
+    >
       <Text size="lg" className="font-semibold">
         {sourceName}
       </Text>
@@ -24,7 +27,7 @@ const StoryHeader: React.FC<StoryHeaderProps> = ({
         alt={`${sourceName} logo`}
         height={32}
         width={32}
-        className="w-4 h-4 object-cover object-center"
+        className="w-5 h-5 object-scale-down object-center"
       />
     </Row>
   </Card.Header>

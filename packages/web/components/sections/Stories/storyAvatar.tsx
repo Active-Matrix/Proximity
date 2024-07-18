@@ -6,24 +6,24 @@ import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
 
 interface StoryAvatarProps {
-  src: StaticImageData | string;
+  avatar: StaticImageData | string;
   name: string;
   id: string;
   isDefault: boolean;
 }
 
 const StoryAvatar: React.FC<StoryAvatarProps> = ({
-  src,
+  avatar,
   name,
   id,
   isDefault,
 }) => {
-  const { selectedStory, setSelectedStory } = useContext(GlobalContext);
-  const isSelected = selectedStory === id;
+  const { selectedSourceID, setSelectedSourceID } = useContext(GlobalContext);
+  const isSelected = selectedSourceID === id;
 
   useEffect(() => {
-    if (isDefault) setSelectedStory(id);
-  }, [id, isDefault, setSelectedStory]);
+    if (isDefault) setSelectedSourceID(id);
+  }, [id, isDefault, setSelectedSourceID]);
 
   const rowClasses = useMemo(
     () =>
@@ -46,9 +46,9 @@ const StoryAvatar: React.FC<StoryAvatarProps> = ({
   );
 
   return (
-    <Row className={rowClasses} onClick={() => setSelectedStory(id)}>
+    <Row className={rowClasses} onClick={() => setSelectedSourceID(id)}>
       <Image
-        src={src}
+        src={avatar}
         alt={name}
         className={imageClasses}
         width={62}

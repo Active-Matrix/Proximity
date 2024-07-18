@@ -5,7 +5,7 @@ import React from 'react';
 
 const StoryBookMark = () => {
   return (
-    <Row align="center" className="bg-white p-2 px-5 rounded-3xl">
+    <Row align="center" className="bg-white p-2 px-5 rounded-3xl h-10">
       <FontAwesomeIcon icon={faBookmark} className="text-black" size="lg" />
     </Row>
   );

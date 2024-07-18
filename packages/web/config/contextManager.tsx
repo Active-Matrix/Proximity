@@ -3,8 +3,8 @@ import { createContext, PropsWithChildren, useState } from 'react';
 import React from 'react';
 
 interface GlobalContextType {
-  selectedStory: string;
-  setSelectedStory: React.Dispatch<React.SetStateAction<string>>;
+  selectedSourceID: string;
+  setSelectedSourceID: React.Dispatch<React.SetStateAction<string>>;
   selectedTopic: string;
   setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
   theme: string;
@@ -16,13 +16,13 @@ export const GlobalContext = createContext<GlobalContextType>(
 );
 
 export const ContextManager = ({ children }: PropsWithChildren) => {
-  const [selectedStory, setSelectedStory] = useState<string>('');
+  const [selectedSourceID, setSelectedSourceID] = useState<string>('');
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [theme, setTheme] = useState<string>('');
 
   const value: GlobalContextType = {
-    selectedStory,
-    setSelectedStory,
+    selectedSourceID,
+    setSelectedSourceID,
     selectedTopic,
     setSelectedTopic,
     theme,
