@@ -14,7 +14,7 @@ const Header = () => {
     <header className="px-2 pt-1 flex flex-col gap-4 relative bg-gradient-to-t from-[#fff0] via-[#d8f4f845] to-[#F6FEFE] select-none">
       <Row align="center" className="justify-between w-full px-2">
         <Text size="xxxl" className="font-[700]">
-          Proxomity
+          Proximity
         </Text>
 
         <FontAwesomeIcon icon={faEllipsisVertical} size="xl" className="p-1" />
