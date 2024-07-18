@@ -24,18 +24,18 @@ const PreviewCard = ({
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex-center"
+        className="bg-transparent p-2 flex-center rounded-none"
       >
         <Row
           align="center"
-          className="p-2 rounded-[1.5rem] justify-start shadow-[rgba(0,_0,_0,_0.24)_0px_1px_8px] gap-2"
+          className="p-2 bg-accent border-b-2 justify-start s gap-2"
         >
           <Image
             src={src}
             alt=""
             height={120}
             width={120}
-            className="h-32 w-32 rounded-[1rem] object-cover object-center"
+            className="h-32 w-32 rounded-2xl object-cover object-center"
           />
 
           <Column className="h-28 w-full justify-between">
