@@ -17,7 +17,7 @@ const Topics = () => {
               align="center"
               className={`
                 ${selected === topic ? 'bg-black border-black' : 'bg-accent border-[#DFDFDF]'}
-                p-2 px-5 rounded-[30px] gap-1 transition-all duration-300 border-[2px] select-none`}
+                p-2 px-5 rounded-[30px] gap-1 transition-all duration-300 border-[1px] select-none`}
               onClick={() => setSelected(topic)}
             >
               <Text

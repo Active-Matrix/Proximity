@@ -19,11 +19,11 @@ const BottomBar = () => {
       href: '/',
       icon: faNewspaper,
     },
-    {
-      label: 'Search',
-      href: '/',
-      icon: faMagnifyingGlass,
-    },
+    // {
+    //   label: 'Search',
+    //   href: '/',
+    //   icon: faMagnifyingGlass,
+    // },
     {
       label: 'Saved',
       href: '/',

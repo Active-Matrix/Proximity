@@ -47,7 +47,10 @@ const StoryOverview = () => {
           <Text className="text-white font-semibold">12 min read</Text>
         </Card.Footer>
       </Card>
-      <Text size="lg" className="px-2 font-semibold line-clamp-2">
+      <Text
+        size="lg"
+        className="px-2 text-[#1e1e1e] font-semibold line-clamp-2"
+      >
         A hypothetical point in time when artificial intelligence (AI) surpasses
         human capabilities
       </Text>

@@ -4,10 +4,8 @@ import { Column } from '@artimisjs/ui';
 export default function Home() {
   return (
     <main className="flex flex-col gap-5 pb-24">
-      <Column className="gap-4">
-        <Header />
-        <Stories />
-      </Column>
+      <Header />
+      <Stories />
 
       <div className="flex-center flex-col gap-2">
         <Topics />

@@ -7,30 +7,34 @@ const Stories = () => {
   const stories = [
     {
       name: 'CNN',
-      src: 'https://ik.imagekit.io/geeekg65rf/Frame%206.png?updatedAt=1721230408516',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector.png',
     },
 
     {
       name: 'Medium',
-      src: 'https://ik.imagekit.io/geeekg65rf/Frame%207.png?updatedAt=1721230408450',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector-1.png',
     },
     {
       name: 'Newyork Times',
-      src: 'https://ik.imagekit.io/geeekg65rf/Frame%208.png?updatedAt=1721230408446',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector-2.png',
     },
     {
       name: 'Dev',
-      src: 'https://ik.imagekit.io/geeekg65rf/Frame%209.png?updatedAt=1721230408512',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector-3.png',
     },
     {
       name: 'CNN',
-      src: 'https://ik.imagekit.io/geeekg65rf/Frame%2010.png?updatedAt=1721230408536',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector-6.png',
+    },
+    {
+      name: 'Medium',
+      src: 'https://ik.imagekit.io/geeekg65rf/Vector-5.png',
     },
   ];
   return (
     <Column align="start" className="gap-4">
       <HorizontalScroll>
-        <Row className="flex justify-center items-center gap-4 px-2">
+        <Row className="flex justify-center items-center gap-2 px-2">
           {stories.map((story) => (
             <StoryAvatar src={story.src} alt={story.name} key={story.name} />
           ))}

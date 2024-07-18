@@ -24,11 +24,11 @@ const PreviewCard = ({
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex-center rounded-none"
+        className="bg-transparent p-2 flex-center"
       >
         <Row
           align="center"
-          className="py-2 pb-3 bg-accent border-b-2 justify-start s gap-2"
+          className="py-2 pb-4  border-b-[1px] justify-start s gap-2"
         >
           <Image
             src={src}
@@ -40,7 +40,7 @@ const PreviewCard = ({
 
           <Column className="h-32 pb-2 w-full justify-between">
             <Text
-              className="p-1 line-clamp-3 overflow-hidden font-semibold text-[#343434]"
+              className="p-1 line-clamp-3 overflow-hidden font-[500] text-[#343434]"
               size="md"
             >
               {title}
@@ -48,7 +48,7 @@ const PreviewCard = ({
 
             <Row className="w-full justify-between pr-2 opacity-70">
               <Text
-                className="p-1 overflow-hidden font-semibold line-clamp-1 text-nowrap w-[60%]"
+                className="p-1 overflow-hidden font-[500] line-clamp-1 text-nowrap w-[60%]"
                 size="xs"
               >
                 {tags.map((tag) => (
@@ -58,7 +58,7 @@ const PreviewCard = ({
                 ))}
               </Text>
               <Text
-                className="p-1 line-clamp-4 overflow-hidden font-semibold"
+                className="p-1 line-clamp-4 overflow-hidden font-[500]"
                 size="xs"
               >
                 {readTime} min read
