@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
 import { Row } from '@artimisjs/ui';

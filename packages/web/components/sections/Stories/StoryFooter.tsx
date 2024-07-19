@@ -14,7 +14,7 @@ const StoryFooter: React.FC<StoryFooterProps> = ({
     <Text className="text-white font-semibold">
       {storyTags.map((storyTag) => (
         <span key={storyTag} className="mr-1">
-          #{storyTag}
+          #{storyTag.toLowerCase()}
         </span>
       ))}
     </Text>

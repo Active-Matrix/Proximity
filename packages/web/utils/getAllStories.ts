@@ -1,4 +1,6 @@
-export const getAllStories = async () => {
+import { cache } from 'react';
+
+export const getAllStories = cache(async () => {
   const stories = [
     {
       name: 'CNBC',
@@ -105,4 +107,4 @@ export const getAllStories = async () => {
   ];
 
   return stories;
-}
+});

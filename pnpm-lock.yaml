@@ -50,6 +50,8 @@ importers:
 
   packages/config/typescript-config: {}
 
+  packages/ml: {}
+
   packages/web:
     dependencies:
       '@artimisjs/ui':
