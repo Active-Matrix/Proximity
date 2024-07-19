@@ -1,21 +1,30 @@
 'use client';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
 import { Row } from '@artimisjs/ui';
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import TopicButton from './TopicButton';
 import { getAllTopics } from '@/utils';
 import { TopicsType } from '@/types';
+import { TopicsSkeleton } from '@/components/skeleton';
 
 const Topics = () => {
-  const [topics, setTopics] = useState<TopicsType[]>();
+  const [topics, setTopics] = useState<TopicsType[] | null>(null);
 
-  useEffect(() => {
+  useMemo(() => {
     const fetchTopics = async () => {
       const res = await getAllTopics();
       setTopics(res);
     };
     fetchTopics();
   }, []);
+
+  if (topics === null) {
+    return (
+      <div className="mt-4">
+        <TopicsSkeleton />
+      </div>
+    );
+  }
 
   return (
     <section className="mt-4 w-screen overflow-x-hidden">

@@ -23,6 +23,8 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@serwist/next": "^9.0.3",
+    "axios": "^1.7.2",
+    "axios-cache-interceptor": "^1.5.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.408.0",

@@ -5,5 +5,5 @@ export type NewsPreviewType = {
   tags: string[];
   readTime: number;
   href: string;
-  categoty: string;
+  category: string;
 }

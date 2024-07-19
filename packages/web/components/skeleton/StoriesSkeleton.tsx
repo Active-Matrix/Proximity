@@ -7,7 +7,7 @@ import React from 'react';
 const StoryAvatarSkeleton = () => {
   return (
     <HorizontalScroll>
-      <Row className="flex justify-center items-center gap-2 px-2">
+      <Row className="flex justify-center items-center gap-2 px-2 ">
         {Array.from({ length: 6 }, (_, index) => (
           <Row
             key={index}

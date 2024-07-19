@@ -3,25 +3,40 @@ import { Column, Row } from '@artimisjs/ui';
 import StoryAvatar from './storyAvatar';
 import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { GlobalContext } from '@/config/contextManager';
 import { StoryType } from '@/types';
 import { getAllStories } from '@/utils/index';
+import { StoriesSkeleton, StoryOverviewSkeleton } from '@/components/skeleton';
 
 const Stories = () => {
   const { selectedSourceID } = useContext(GlobalContext);
-  const [stories, setStories] = useState<StoryType[]>();
+  const [stories, setStories] = useState<StoryType[] | null>(null);
   const [selectedSource, setSelectedSource] = useState<StoryType>();
+  const [isPreviewLoading, setIsPreviewLoading] = useState(true);
+
+  useMemo(() => {
+    const fetchStories = async () => {
+      setIsPreviewLoading(true);
+      const res = await getAllStories();
+      setStories(res);
+      setIsPreviewLoading(false);
+    };
+    fetchStories();
+  }, []);
 
   useEffect(() => {
-    getAllStories().then((res) => {
-      setStories(res);
-      const Source = stories?.find((story) => story.id === selectedSourceID);
-      if (Source) {
-        setSelectedSource(Source);
-      }
-    });
+    setIsPreviewLoading(true);
+    const Source = stories?.find((story) => story.id === selectedSourceID);
+    if (Source) {
+      setSelectedSource(Source);
+    }
+    setTimeout(() => setIsPreviewLoading(false), 420);
   }, [selectedSourceID]);
+
+  if (stories === null) {
+    return <StoriesSkeleton />;
+  }
 
   return (
     <Column align="start" className="gap-4">
@@ -38,16 +53,19 @@ const Stories = () => {
           ))}
         </Row>
       </HorizontalScroll>
-      {selectedSource && (
-        <StoryOverview
-          coverImage={selectedSource.stories[0].coverImage}
-          sourceAvatar={selectedSource.avatar}
-          sourceName={selectedSource.code}
-          storyTitle={selectedSource.stories[0].title}
-          storyTags={selectedSource.stories[0].tags}
-          storyReadTime={selectedSource.stories[0].readTime}
-        />
-      )}
+      {selectedSource &&
+        (isPreviewLoading ? (
+          <StoryOverviewSkeleton />
+        ) : (
+          <StoryOverview
+            coverImage={selectedSource.stories[0].coverImage}
+            sourceAvatar={selectedSource.avatar}
+            sourceName={selectedSource.code}
+            storyTitle={selectedSource.stories[0].title}
+            storyTags={selectedSource.stories[0].tags}
+            storyReadTime={selectedSource.stories[0].readTime}
+          />
+        ))}
     </Column>
   );
 };

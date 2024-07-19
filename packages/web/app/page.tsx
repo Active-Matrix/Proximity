@@ -30,7 +30,7 @@ const NewsPreview = dynamic(
     ssr: false,
     loading: () => (
       <Column className="gap-4 w-full">
-        {[...Array(5)].map((_, index) => (
+        {[...Array(3)].map((_, index) => (
           <NewsPreviewSkeleton key={index} />
         ))}
       </Column>
@@ -47,10 +47,9 @@ export default function Home() {
       </Suspense>
 
       <div className="flex-center flex-col gap-2">
-        <Suspense fallback={<StoriesSkeleton />}>
+        <Suspense fallback={<TopicsSkeleton />}>
           <Topics />
         </Suspense>
-
         <Suspense fallback={<NewsPreviewSkeleton />}>
           <NewsPreview />
         </Suspense>
