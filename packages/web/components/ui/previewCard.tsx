@@ -35,7 +35,7 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
             alt={title}
             height={120}
             width={120}
-            className="h-32 min-w-32 w-32 rounded-2xl object-cover object-center"
+            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
           />
           <Column className="h-32 pb-2 w-full justify-between">
             <Text
@@ -44,7 +44,7 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
             >
               {title}
             </Text>
-            <Row className="w-full justify-between pr-2 opacity-70">
+            <Row className="w-full justify-between pr-4 opacity-70">
               <Tags tags={tags} />
               <Text
                 className="p-1 line-clamp-4 overflow-hidden font-[500]"

@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils';
 import { Card, Column, Row } from '@artimisjs/ui';
 import HorizontalScroll from '../ui/horizontalScroll';
+import { animate } from '@/lib/skeletonAnimation';
 import React from 'react';
-
-const animate = 'bg-slate-200 animate-pulse duration-[.5ms]';
 
 const StoryAvatarSkeleton = () => {
   return (

@@ -1,5 +1,11 @@
-import { StoriesSkeleton } from "./StoriesSkeleton";
+import { StoriesSkeleton, StoryAvatarSkeleton, StoryOverviewSkeleton } from "./StoriesSkeleton";
+import { NewsPreviewSkeleton } from './NewsPreviewSkeleton'
+import TopicsSkeleton from "./TopicsSkeleton";
 
 export {
-  StoriesSkeleton
+  StoriesSkeleton,
+  NewsPreviewSkeleton,
+  StoryAvatarSkeleton,
+  StoryOverviewSkeleton,
+  TopicsSkeleton,
 }

@@ -1,7 +1,11 @@
 'use client';
-import { NewsPreview, Header } from '@/components/sections';
-import { StoriesSkeleton } from '@/components/skeleton';
-import TopicsSkeleton from '@/components/skeleton/TopicsSkeleton';
+import { Header } from '@/components/sections';
+import {
+  NewsPreviewSkeleton,
+  StoriesSkeleton,
+  TopicsSkeleton,
+} from '@/components/skeleton';
+import { Column } from '@artimisjs/ui';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
@@ -20,6 +24,20 @@ const Topics = dynamic(() => import('@/components/sections/Topics/Topics'), {
   ),
 });
 
+const NewsPreview = dynamic(
+  () => import('@/components/sections/NewsPreview/NewsPreview'),
+  {
+    ssr: false,
+    loading: () => (
+      <Column className="gap-4 w-full">
+        {[...Array(5)].map((_, index) => (
+          <NewsPreviewSkeleton key={index} />
+        ))}
+      </Column>
+    ),
+  }
+);
+
 export default function Home() {
   return (
     <main className="flex flex-col gap-5 pb-24">
@@ -32,7 +50,10 @@ export default function Home() {
         <Suspense fallback={<StoriesSkeleton />}>
           <Topics />
         </Suspense>
-        <NewsPreview />
+
+        <Suspense fallback={<NewsPreviewSkeleton />}>
+          <NewsPreview />
+        </Suspense>
       </div>
     </main>
   );
