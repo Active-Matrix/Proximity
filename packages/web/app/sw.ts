@@ -8,6 +8,8 @@ import { Serwist } from 'serwist';
 // `"self.__SW_MANIFEST"`.
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {
+    addEventListener(arg0: string, arg1: (event: any) => void): unknown;
+    clients: any;
     __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
   }
 }
