@@ -33,7 +33,11 @@ const Header = () => {
           size="lg"
           className="text-[#8a97b4]"
         />
-        <Input type="text" placeholder="Find Interesting Topics..." />
+        <Input
+          type="text"
+          placeholder="Find Interesting Topics..."
+          id="search"
+        />
       </Row>
     </header>
   );

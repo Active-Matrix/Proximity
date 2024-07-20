@@ -14,9 +14,11 @@ const NewsPreview = () => {
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(newsList === null);
+      }, 350);
       const res = await getNewsPreview(selectedTopic);
       setNewsList(res);
-      setIsLoading(false);
     };
     fetchNews();
   }, [selectedTopic]);

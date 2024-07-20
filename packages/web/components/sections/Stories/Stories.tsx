@@ -3,7 +3,7 @@ import { Column, Row } from '@artimisjs/ui';
 import StoryAvatar from './storyAvatar';
 import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '@/config/contextManager';
 import { StoryType } from '@/types';
 import { getAllStories } from '@/utils/index';
@@ -15,7 +15,7 @@ const Stories = () => {
   const [selectedSource, setSelectedSource] = useState<StoryType>();
   const [isPreviewLoading, setIsPreviewLoading] = useState(true);
 
-  useMemo(() => {
+  useEffect(() => {
     const fetchStories = async () => {
       setIsPreviewLoading(true);
       const res = await getAllStories();

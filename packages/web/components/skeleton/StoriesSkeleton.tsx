@@ -43,7 +43,7 @@ const StoryOverviewSkeleton = () => {
       />
       <Row
         className={cn(
-          'flex justify-center items-center gap-2 h-4 mx-2 w-[50%]',
+          'flex justify-center items-center gap-2 h-4 mx-2 mb-[.18rem] w-[50%]',
           animate
         )}
       />

@@ -1,7 +1,8 @@
 import { GlobalContext } from '@/config/contextManager';
 import { cn } from '@/lib/utils';
-import { Row, Text } from '@artimisjs/ui';
+import { Row } from '@artimisjs/ui';
 import React, { useContext, useEffect, useMemo } from 'react';
+import { Text } from '@/components/ui/text';
 
 interface TopicButtonProps {
   id: string;

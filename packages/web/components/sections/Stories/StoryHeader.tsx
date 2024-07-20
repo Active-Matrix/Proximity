@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Row, Text } from '@artimisjs/ui';
+import { Card, Row } from '@artimisjs/ui';
 import Image, { StaticImageData } from 'next/image';
+import { Text } from '@/components/ui/text';
 import StoryBookMark from './StoryBookMark';
 
 interface StoryHeaderProps {

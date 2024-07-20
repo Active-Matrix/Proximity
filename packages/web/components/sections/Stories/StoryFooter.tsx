@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Text } from '@artimisjs/ui';
+import { Card } from '@artimisjs/ui';
+import { Text } from '@/components/ui/text';
 
 interface StoryFooterProps {
   storyTags: string[];

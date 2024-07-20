@@ -1,5 +1,6 @@
 import Axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { setupCache } from 'axios-cache-interceptor';
+import { log } from './log';
 
 
 const instance = Axios.create({
@@ -12,7 +13,7 @@ const api = setupCache(instance)
 // //? Initiate interceptor for logging while in development
 api.interceptors.request.use((request) => {
   if (process.env.NODE_ENV === 'development') {
-    console.log('Starting Request', request);
+    log('axios', 'Starting Request:', request);
   }
   return request;
 }, (error: AxiosError) => {
@@ -22,16 +23,16 @@ api.interceptors.request.use((request) => {
 //? Response interceptor for logging and error handling
 api.interceptors.response.use((response) => {
   if (process.env.NODE_ENV === 'development') {
-    console.log('Response:', response);
+    log('axios', 'Response:', response);
   }
   return response;
 }, (error: AxiosError) => {
   if (error.response) {
-    console.error('Response Error:', error.response);
+    log('axios-error', 'Response Error:', error.response);
   } else if (error.request) {
-    console.error('No Response:', error.request);
+    log('axios-error', 'No Response:', error.request);
   } else {
-    console.error('Error:', error.message);
+    log('axios', 'Error:', error.response);
   }
   return Promise.reject(error);
 });
