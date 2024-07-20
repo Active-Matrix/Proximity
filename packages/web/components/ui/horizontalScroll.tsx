@@ -1,9 +1,21 @@
+import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
-import React, { PropsWithChildren } from 'react';
+import React, { HTMLProps, PropsWithChildren } from 'react';
 
-const HorizontalScroll = ({ children }: PropsWithChildren) => {
+interface HorizontalScrollProps
+  extends PropsWithChildren,
+    HTMLProps<HTMLDivElement> {}
+
+const HorizontalScroll = ({
+  children,
+  className,
+  ...rest
+}: HorizontalScrollProps) => {
   return (
-    <Row className="w-screen overflow-x-scroll whitespace-nowrap">
+    <Row
+      className={cn('w-screen overflow-x-scroll whitespace-nowrap', className)}
+      {...rest}
+    >
       {children}
     </Row>
   );

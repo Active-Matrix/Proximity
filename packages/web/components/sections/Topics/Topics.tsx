@@ -1,34 +1,42 @@
 'use client';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
-import { Row, Text } from '@artimisjs/ui';
-import React, { useState } from 'react';
+import { Row } from '@artimisjs/ui';
+import React, { useMemo, useState } from 'react';
+import TopicButton from './TopicButton';
+import { getAllTopics } from '@/utils';
+import { TopicsType } from '@/types';
+import { TopicsSkeleton } from '@/components/skeleton';
 
 const Topics = () => {
-  const topics = ['For You', 'Sports', 'Cosmos', 'Tech', 'Movies', 'Space'];
-  const [selected, setSelected] = useState<string>(topics[0]);
+  const [topics, setTopics] = useState<TopicsType[] | null>(null);
+
+  useMemo(() => {
+    const fetchTopics = async () => {
+      const res = await getAllTopics();
+      setTopics(res);
+    };
+    fetchTopics();
+  }, []);
+
+  if (topics === null) {
+    return (
+      <div className="mt-4">
+        <TopicsSkeleton />
+      </div>
+    );
+  }
 
   return (
     <section className="mt-4 w-screen overflow-x-hidden">
       <HorizontalScroll>
         <Row className="flex justify-center items-center gap-2 px-2 pr-20">
-          {topics.map((topic) => (
-            <Row
-              key={topic}
-              align="center"
-              className={`
-                ${selected === topic ? 'bg-black border-black' : 'bg-accent border-[#DFDFDF]'}
-                p-2 px-5 rounded-[30px] gap-1 transition-all duration-300 border-[1px] select-none`}
-              onClick={() => setSelected(topic)}
-            >
-              <Text
-                size="sm"
-                className={`
-                ${selected === topic ? 'text-white' : 'text-black'}
-                font-semibold`}
-              >
-                {topic}
-              </Text>
-            </Row>
+          {topics?.map((topic, index) => (
+            <TopicButton
+              key={index}
+              label={topic.label}
+              id={topic.id}
+              isDefault={index === 0}
+            />
           ))}
         </Row>
       </HorizontalScroll>

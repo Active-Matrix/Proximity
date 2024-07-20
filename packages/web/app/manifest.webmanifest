@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Project News App",
-  "short_name": "News App",
+  "name": "Proximity",
+  "short_name": "Proximity",
   "description": "News App",
   "icons": [
     {

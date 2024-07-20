@@ -1,8 +1,8 @@
 'use client';
-import { Button, Card } from '@artimisjs/ui';
+import { Card } from '@artimisjs/ui';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBookmark, faNewspaper } from '@fortawesome/free-regular-svg-icons';
-import { faHome, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
