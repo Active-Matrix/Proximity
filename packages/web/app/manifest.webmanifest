@@ -32,7 +32,7 @@
   "id": "com.archivematrix.proximity.xi",
   "lang": "en",
   "orientation": "portrait",
-  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "display_override": ["standalone", "window-controls-overlay", "browser"],
   "dir": "auto",
   "categories": ["news"]
 }
