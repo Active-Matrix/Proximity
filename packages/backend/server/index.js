@@ -63,8 +63,8 @@ app.get('/news', (req, res) => {
       category: 'for-you',
     },
   ];
-  setTimeout(() =>
-    res.json(newsList), 1000)
+
+  res.json(newsList)
 })
 
 app.get('/topics', (req, res) => {
@@ -101,8 +101,7 @@ app.get('/topics', (req, res) => {
     }
   ]
 
-  setTimeout(() =>
-    res.json(topics), 1000)
+  res.json(topics), 1000
 })
 
 app.get('/stories', (req, res) => {
@@ -211,8 +210,7 @@ app.get('/stories', (req, res) => {
       ],
     },
   ];
-  setTimeout(() =>
-    res.json(stories), 1000)
+  res.json(stories)
 
 })
 // Start the server
