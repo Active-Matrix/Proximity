@@ -28,5 +28,11 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "id": "com.archivematrix.proximity.xi",
+  "lang": "en",
+  "orientation": "portrait",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "dir": "auto",
+  "categories": ["news"]
 }
