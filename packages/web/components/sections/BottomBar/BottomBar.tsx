@@ -1,5 +1,5 @@
 'use client';
-import { GlobalContext } from '@/config/contextManager';
+import { GlobalContext } from '@/context/contextManager';
 import { Card } from '@artimisjs/ui';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBookmark, faNewspaper } from '@fortawesome/free-regular-svg-icons';

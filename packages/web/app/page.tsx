@@ -1,5 +1,5 @@
 'use client';
-import { GlobalContext } from '@/config/contextManager';
+import { GlobalContext } from '@/context/contextManager';
 import HomeScreen from '@/screens/HomeScreen';
 import SavedItemsScreen from '@/screens/SavedItemsScreen';
 import { Fragment, useContext } from 'react';

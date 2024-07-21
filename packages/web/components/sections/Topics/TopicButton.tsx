@@ -1,4 +1,4 @@
-import { GlobalContext } from '@/config/contextManager';
+import { GlobalContext } from '@/context/contextManager';
 import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
 import React, { useContext, useEffect, useMemo } from 'react';
@@ -7,15 +7,10 @@ import { Text } from '@/components/ui/text';
 interface TopicButtonProps {
   id: string;
   label: string;
-  isDefault: boolean;
 }
 
-const TopicButton: React.FC<TopicButtonProps> = ({ id, label, isDefault }) => {
+const TopicButton: React.FC<TopicButtonProps> = ({ id, label }) => {
   const { selectedTopic, setSelectedTopic } = useContext(GlobalContext);
-
-  useEffect(() => {
-    if (isDefault) setSelectedTopic(id);
-  }, []);
 
   const containerClasses = useMemo(
     () =>

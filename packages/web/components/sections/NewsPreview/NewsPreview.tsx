@@ -1,25 +1,24 @@
 'use client';
 import PreviewCard from '@/components/ui/previewCard';
-import { GlobalContext } from '@/config/contextManager';
-import { NewsPreviewType } from '@/types';
+import { GlobalContext } from '@/context/contextManager';
 import { getNewsPreview } from '@/utils/getNewsPreview';
 import React, { useContext, useEffect, useState } from 'react';
 import { Column } from '@artimisjs/ui';
 import { NewsPreviewSkeleton } from '@/components/skeleton';
 
 const NewsPreview = () => {
-  const [newsList, setNewsList] = useState<NewsPreviewType[] | null>(null);
-  const { selectedTopic } = useContext(GlobalContext);
+  const { selectedTopic, newsPreview, setNewsPreview } =
+    useContext(GlobalContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true);
       setTimeout(() => {
-        setIsLoading(newsList === null);
+        setIsLoading(newsPreview === null);
       }, 350);
       const res = await getNewsPreview(selectedTopic);
-      setNewsList(res);
+      setNewsPreview(res);
     };
     fetchNews();
   }, [selectedTopic]);
@@ -36,7 +35,7 @@ const NewsPreview = () => {
 
   return (
     <section className="flex flex-col">
-      {newsList?.map((news, index) => (
+      {newsPreview?.map((news, index) => (
         <PreviewCard
           key={`${index}-${news.href}`}
           href={news.href}

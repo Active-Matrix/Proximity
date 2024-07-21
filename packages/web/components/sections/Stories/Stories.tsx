@@ -4,14 +4,14 @@ import StoryAvatar from './storyAvatar';
 import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
 import { useContext, useEffect, useState } from 'react';
-import { GlobalContext } from '@/config/contextManager';
+import { GlobalContext } from '@/context/contextManager';
 import { StoryType } from '@/types';
 import { getAllStories } from '@/utils/index';
 import { StoriesSkeleton, StoryOverviewSkeleton } from '@/components/skeleton';
 
 const Stories = () => {
-  const { selectedSourceID } = useContext(GlobalContext);
-  const [stories, setStories] = useState<StoryType[] | null>(null);
+  const { stories, setStories, selectedSourceID, setSelectedSourceID } =
+    useContext(GlobalContext);
   const [selectedSource, setSelectedSource] = useState<StoryType>();
   const [isPreviewLoading, setIsPreviewLoading] = useState(true);
   const triggerRefetch = false;
@@ -21,6 +21,7 @@ const Stories = () => {
       setIsPreviewLoading(true);
       const res = await getAllStories();
       setStories(res);
+      selectedSourceID === '' && setSelectedSourceID(res[0].id);
       setIsPreviewLoading(false);
     };
     fetchStories();
@@ -49,7 +50,6 @@ const Stories = () => {
               name={story.name}
               id={story.id}
               key={story.name}
-              isDefault={index === 0}
             />
           ))}
         </Row>

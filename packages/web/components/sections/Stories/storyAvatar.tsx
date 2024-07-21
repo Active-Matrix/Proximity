@@ -1,7 +1,7 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
 import React, { useEffect, useContext, useMemo } from 'react';
-import { GlobalContext } from '@/config/contextManager';
+import { GlobalContext } from '@/context/contextManager';
 import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
 
@@ -9,21 +9,11 @@ interface StoryAvatarProps {
   avatar: StaticImageData | string;
   name: string;
   id: string;
-  isDefault: boolean;
 }
 
-const StoryAvatar: React.FC<StoryAvatarProps> = ({
-  avatar,
-  name,
-  id,
-  isDefault,
-}) => {
+const StoryAvatar: React.FC<StoryAvatarProps> = ({ avatar, name, id }) => {
   const { selectedSourceID, setSelectedSourceID } = useContext(GlobalContext);
   const isSelected = selectedSourceID === id;
-
-  useEffect(() => {
-    if (isDefault) setSelectedSourceID(id);
-  }, [id, isDefault, setSelectedSourceID]);
 
   const rowClasses = useMemo(
     () =>

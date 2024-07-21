@@ -9,7 +9,7 @@ import '@/styles/globals.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import BottomBar from '@/components/sections/BottomBar/BottomBar';
-import { ContextManager } from '@/config/contextManager';
+import { ContextManager } from '@/context/contextManager';
 
 const fontSans = FontSans({
   subsets: ['latin'],
