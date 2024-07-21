@@ -14,12 +14,15 @@ const NewsPreview = () => {
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(newsPreview === null);
-      }, 350);
-      const res = await getNewsPreview(selectedTopic);
+
+      const delay = new Promise((resolve) => setTimeout(resolve, 350));
+      const newsPromise = getNewsPreview(selectedTopic);
+      const [res] = await Promise.all([newsPromise, delay]);
+
       setNewsPreview(res);
+      setIsLoading(false);
     };
+
     fetchNews();
   }, [selectedTopic]);
 

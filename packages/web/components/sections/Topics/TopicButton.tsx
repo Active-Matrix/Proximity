@@ -15,8 +15,8 @@ const TopicButton: React.FC<TopicButtonProps> = ({ id, label }) => {
   const containerClasses = useMemo(
     () =>
       cn(
-        'h-10 px-5 rounded-[30px] gap-1 border-[1px]',
-        'transition-all duration-300  select-none',
+        'h-10 px-5 rounded-[30px] gap-1 border-[1px] opacity-[86%]',
+        'transition-all duration-300 select-none',
         selectedTopic === id
           ? 'bg-black border-black'
           : 'bg-accent border-[#DFDFDF]'
