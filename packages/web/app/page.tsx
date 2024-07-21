@@ -1,59 +1,32 @@
 'use client';
-import { Header } from '@/components/sections';
-import {
-  NewsPreviewSkeleton,
-  StoriesSkeleton,
-  TopicsSkeleton,
-} from '@/components/skeleton';
-import { Column } from '@artimisjs/ui';
-import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { GlobalContext } from '@/config/contextManager';
+import HomeScreen from '@/screens/HomeScreen';
+import SavedItemsScreen from '@/screens/SavedItemsScreen';
+import { Fragment, useContext } from 'react';
 
-// skeleton
-const Stories = dynamic(() => import('@/components/sections/Stories/Stories'), {
-  ssr: false,
-  loading: () => <StoriesSkeleton />,
-});
+const page = () => {
+  const { selectedScreen } = useContext(GlobalContext);
 
-const Topics = dynamic(() => import('@/components/sections/Topics/Topics'), {
-  ssr: false,
-  loading: () => (
-    <div className="mt-4">
-      <TopicsSkeleton />
-    </div>
-  ),
-});
+  const screens = [
+    {
+      href: '/',
+      component: <HomeScreen />,
+    },
+    {
+      href: '/saved',
+      component: <SavedItemsScreen />,
+    },
+    {
+      href: '/news',
+      component: <div>News</div>,
+    },
+  ];
 
-const NewsPreview = dynamic(
-  () => import('@/components/sections/NewsPreview/NewsPreview'),
-  {
-    ssr: false,
-    loading: () => (
-      <Column className="gap-4 w-full">
-        {[...Array(3)].map((_, index) => (
-          <NewsPreviewSkeleton key={index} />
-        ))}
-      </Column>
-    ),
-  }
-);
+  const SelectedScreenComponent = screens.find(
+    (screen) => screen.href === selectedScreen
+  )?.component;
 
-export default function Home() {
-  return (
-    <main className="flex flex-col gap-5 pb-24">
-      <Header />
-      <Suspense fallback={<StoriesSkeleton />}>
-        <Stories />
-      </Suspense>
+  return SelectedScreenComponent;
+};
 
-      <div className="flex-center flex-col gap-2">
-        <Suspense fallback={<TopicsSkeleton />}>
-          <Topics />
-        </Suspense>
-        <Suspense fallback={<NewsPreviewSkeleton />}>
-          <NewsPreview />
-        </Suspense>
-      </div>
-    </main>
-  );
-}
+export default page;

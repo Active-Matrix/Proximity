@@ -4,7 +4,6 @@ import StoryImage from './StoryImage';
 import StoryHeader from './StoryHeader';
 import StoryFooter from './StoryFooter';
 import StoryTitle from './StoryTitle';
-import { StoryOverviewSkeleton } from '@/components/skeleton/StoriesSkeleton';
 
 interface StoryOverviewProps {
   coverImage: string;
@@ -24,25 +23,23 @@ const StoryOverview: React.FC<StoryOverviewProps> = ({
   storyReadTime,
 }) => {
   return (
-    <Suspense fallback={<StoryOverviewSkeleton />}>
-      <Column className="gap-2 px-2">
-        <Card height="fit" width="full" radius="xxl" className="h-[26vh]">
-          <Card.Backdrop className="h-full w-full">
-            <StoryImage
-              src={coverImage}
-              alt={`cover image of story from ${sourceName}`}
-            />
-          </Card.Backdrop>
-          <StoryHeader sourceAvatar={sourceAvatar} sourceName={sourceName} />
-          <StoryFooter storyReadTime={storyReadTime} storyTags={storyTags} />
-          <div
-            className="bg-gradient-to-t from-[#0000008d] via-[#ffffff00] to-[#fff0] 
-        h-full w-full absolute top-0 z-[7]"
+    <Column className="gap-2 px-2">
+      <Card height="fit" width="full" radius="xxl" className="h-[26vh]">
+        <Card.Backdrop className="h-full w-full">
+          <StoryImage
+            src={coverImage}
+            alt={`cover image of story from ${sourceName}`}
           />
-        </Card>
-        <StoryTitle storyTitle={storyTitle} />
-      </Column>
-    </Suspense>
+        </Card.Backdrop>
+        <StoryHeader sourceAvatar={sourceAvatar} sourceName={sourceName} />
+        <StoryFooter storyReadTime={storyReadTime} storyTags={storyTags} />
+        <div
+          className="bg-gradient-to-t from-[#0000008d] via-[#ffffff00] to-[#fff0] 
+        h-full w-full absolute top-0 z-[7]"
+        />
+      </Card>
+      <StoryTitle storyTitle={storyTitle} />
+    </Column>
   );
 };
 

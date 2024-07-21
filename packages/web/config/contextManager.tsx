@@ -9,6 +9,8 @@ interface GlobalContextType {
   setSelectedTopic: React.Dispatch<React.SetStateAction<string>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  selectedScreen: string;
+  setSelectedScreen: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const GlobalContext = createContext<GlobalContextType>(
@@ -18,6 +20,7 @@ export const GlobalContext = createContext<GlobalContextType>(
 export const ContextManager = ({ children }: PropsWithChildren) => {
   const [selectedSourceID, setSelectedSourceID] = useState<string>('');
   const [selectedTopic, setSelectedTopic] = useState<string>('');
+  const [selectedScreen, setSelectedScreen] = useState<string>('/');
   const [theme, setTheme] = useState<string>('');
 
   const value: GlobalContextType = {
@@ -27,6 +30,8 @@ export const ContextManager = ({ children }: PropsWithChildren) => {
     setSelectedTopic,
     theme,
     setTheme,
+    selectedScreen,
+    setSelectedScreen,
   };
 
   return (

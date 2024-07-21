@@ -14,6 +14,7 @@ const Stories = () => {
   const [stories, setStories] = useState<StoryType[] | null>(null);
   const [selectedSource, setSelectedSource] = useState<StoryType>();
   const [isPreviewLoading, setIsPreviewLoading] = useState(true);
+  const triggerRefetch = false;
 
   useEffect(() => {
     const fetchStories = async () => {
@@ -32,7 +33,7 @@ const Stories = () => {
       setSelectedSource(Source);
     }
     setTimeout(() => setIsPreviewLoading(false), 420);
-  }, [selectedSourceID]);
+  }, [selectedSourceID, triggerRefetch]);
 
   if (stories === null) {
     return <StoriesSkeleton />;
@@ -53,8 +54,9 @@ const Stories = () => {
           ))}
         </Row>
       </HorizontalScroll>
-      {selectedSource &&
-        (isPreviewLoading ? (
+
+      {selectedSource ? (
+        isPreviewLoading ? (
           <StoryOverviewSkeleton />
         ) : (
           <StoryOverview
@@ -65,7 +67,10 @@ const Stories = () => {
             storyTags={selectedSource.stories[0].tags}
             storyReadTime={selectedSource.stories[0].readTime}
           />
-        ))}
+        )
+      ) : (
+        <StoryOverviewSkeleton />
+      )}
     </Column>
   );
 };

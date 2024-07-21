@@ -1,3 +1,4 @@
+'use client';
 import PreviewCard from '@/components/ui/previewCard';
 import { GlobalContext } from '@/config/contextManager';
 import { NewsPreviewType } from '@/types';
@@ -26,7 +27,7 @@ const NewsPreview = () => {
   if (isLoading) {
     return (
       <Column className="gap-4 w-full">
-        {[...Array(3)].map((_, index) => (
+        {[...Array(5)].map((_, index) => (
           <NewsPreviewSkeleton key={index} />
         ))}
       </Column>

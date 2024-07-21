@@ -35,8 +35,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ContextManager>{children}</ContextManager>
-        <BottomBar />
+        <ContextManager>
+          {children}
+          <BottomBar />
+        </ContextManager>
       </body>
     </html>
   );

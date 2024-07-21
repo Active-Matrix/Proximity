@@ -1,13 +1,14 @@
 'use client';
+import { GlobalContext } from '@/config/contextManager';
 import { Card } from '@artimisjs/ui';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBookmark, faNewspaper } from '@fortawesome/free-regular-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 
 const BottomBar = () => {
-  const [selected, setSelected] = useState('Home');
+  const { setSelectedScreen, selectedScreen } = useContext(GlobalContext);
   const buttons = [
     {
       label: 'Home',
@@ -16,7 +17,7 @@ const BottomBar = () => {
     },
     {
       label: 'News',
-      href: '/',
+      href: '/news',
       icon: faNewspaper,
     },
     // {
@@ -26,7 +27,7 @@ const BottomBar = () => {
     // },
     {
       label: 'Saved',
-      href: '/',
+      href: '/saved',
       icon: faBookmark,
     },
   ];
@@ -41,9 +42,9 @@ const BottomBar = () => {
         {buttons.map((button, index) => (
           <button
             className={`w-full h-full rounded-full border
-              ${selected === button.label ? 'bg-white shadow-[rgba(7,_65,_210,_0.2)_0px_0px_10px] border-[#DFDFDF]' : 'bg-transparent border-[#0000]'}`}
+              ${selectedScreen === button.href ? 'bg-white shadow-[rgba(7,_65,_210,_0.2)_0px_0px_10px] border-[#DFDFDF]' : 'bg-transparent border-[#0000]'}`}
             key={`${index}-${button.href}`}
-            onClick={() => setSelected(button.label)}
+            onClick={() => setSelectedScreen(button.href)}
           >
             <FontAwesomeIcon icon={button.icon as IconProp} size="lg" />
           </button>
