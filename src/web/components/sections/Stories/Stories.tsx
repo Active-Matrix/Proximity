@@ -43,7 +43,7 @@ const Stories = () => {
   return (
     <Column align="start" className="gap-4">
       <HorizontalScroll>
-        <Row className="flex justify-center items-center gap-2 px-2">
+        <Row className="flex justify-center items-center gap-3 px-2">
           {stories?.map((story) => (
             <StoryAvatar
               avatar={story.avatar}
