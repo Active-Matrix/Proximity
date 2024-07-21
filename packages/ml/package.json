@@ -1,7 +1,0 @@
-{
-  "name": "recomendation-model",
-  "version": "0.0.0",
-  "scripts": {
-    "start": "python3 -u main.py"
-  }
-}
