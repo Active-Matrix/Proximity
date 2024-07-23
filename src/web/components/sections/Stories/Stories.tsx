@@ -36,11 +36,7 @@ const Stories = () => {
     setTimeout(() => setIsPreviewLoading(false), 420);
   }, [selectedSourceID, triggerRefetch]);
 
-  if (stories === null) {
-    return <StoriesSkeleton />;
-  }
-
-  return (
+  return selectedSource ? (
     <Column align="start" className="gap-4">
       <HorizontalScroll>
         <Row className="flex justify-center items-center gap-3 px-2">
@@ -55,23 +51,21 @@ const Stories = () => {
         </Row>
       </HorizontalScroll>
 
-      {selectedSource ? (
-        isPreviewLoading ? (
-          <StoryOverviewSkeleton />
-        ) : (
-          <StoryOverview
-            coverImage={selectedSource.stories[0].coverImage}
-            sourceAvatar={selectedSource.avatar}
-            sourceName={selectedSource.code}
-            storyTitle={selectedSource.stories[0].title}
-            storyTags={selectedSource.stories[0].tags}
-            storyReadTime={selectedSource.stories[0].readTime}
-          />
-        )
-      ) : (
+      {isPreviewLoading ? (
         <StoryOverviewSkeleton />
+      ) : (
+        <StoryOverview
+          coverImage={selectedSource.stories[0].coverImage}
+          sourceAvatar={selectedSource.avatar}
+          sourceName={selectedSource.code}
+          storyTitle={selectedSource.stories[0].title}
+          storyTags={selectedSource.stories[0].tags}
+          storyReadTime={selectedSource.stories[0].readTime}
+        />
       )}
     </Column>
+  ) : (
+    <StoriesSkeleton />
   );
 };
 

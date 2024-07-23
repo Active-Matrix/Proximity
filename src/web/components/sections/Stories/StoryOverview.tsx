@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Card, Column } from '@artimisjs/ui';
 import StoryImage from './StoryImage';
 import StoryHeader from './StoryHeader';

@@ -29,15 +29,7 @@ const Topics = () => {
     }
   }, [selectedScreen]);
 
-  if (topics === null) {
-    return (
-      <div className="mt-4">
-        <TopicsSkeleton />
-      </div>
-    );
-  }
-
-  return (
+  return topics ? (
     <section className="mt-4 w-screen overflow-x-hidden">
       <HorizontalScroll>
         <Row className="flex justify-center items-center gap-2 px-2 pr-20">
@@ -47,6 +39,10 @@ const Topics = () => {
         </Row>
       </HorizontalScroll>
     </section>
+  ) : (
+    <div className="mt-4">
+      <TopicsSkeleton />
+    </div>
   );
 };
 

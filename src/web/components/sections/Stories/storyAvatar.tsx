@@ -1,6 +1,6 @@
 'use client';
 import Image, { StaticImageData } from 'next/image';
-import React, { useEffect, useContext, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { GlobalContext } from '@/context/contextManager';
 import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
