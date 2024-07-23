@@ -4,6 +4,7 @@ import StoryImage from './StoryImage';
 import StoryHeader from './StoryHeader';
 import StoryFooter from './StoryFooter';
 import StoryTitle from './StoryTitle';
+import '@/styles/scrollSnap.scss';
 
 interface StoryOverviewProps {
   coverImage: string;
@@ -23,8 +24,13 @@ const StoryOverview: React.FC<StoryOverviewProps> = ({
   storyReadTime,
 }) => {
   return (
-    <Column className="gap-2 px-2">
-      <Card height="fit" width="full" radius="xxl" className="h-[26vh]">
+    <Column className="gap-2  w-[94vw] scroll-snap-center">
+      <Card
+        height="fit"
+        width="full"
+        radius="xxl"
+        className="h-[26vh] text-wrap"
+      >
         <Card.Backdrop className="h-full w-full">
           <StoryImage
             src={coverImage}

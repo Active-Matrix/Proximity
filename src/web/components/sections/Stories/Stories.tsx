@@ -8,6 +8,8 @@ import { GlobalContext } from '@/context/contextManager';
 import { StoryType } from '@/types';
 import { getAllStories } from '@/utils/index';
 import { StoriesSkeleton, StoryOverviewSkeleton } from '@/components/skeleton';
+import '@/styles/scrollSnap.scss';
+import StoriesScroll from './StoriesScroll';
 
 const Stories = () => {
   const { stories, setStories, selectedSourceID, setSelectedSourceID } =
@@ -54,14 +56,7 @@ const Stories = () => {
       {isPreviewLoading ? (
         <StoryOverviewSkeleton />
       ) : (
-        <StoryOverview
-          coverImage={selectedSource.stories[0].coverImage}
-          sourceAvatar={selectedSource.avatar}
-          sourceName={selectedSource.code}
-          storyTitle={selectedSource.stories[0].title}
-          storyTags={selectedSource.stories[0].tags}
-          storyReadTime={selectedSource.stories[0].readTime}
-        />
+        <StoriesScroll selectedSource={selectedSource} />
       )}
     </Column>
   ) : (

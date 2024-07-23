@@ -3,7 +3,17 @@
   scroll-snap-stop: always;
 }
 
+.scroll-snap-center {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
 .scroll-snap-mandatory {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+}
+
+.scroll-snap-horizontal {
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
 }
