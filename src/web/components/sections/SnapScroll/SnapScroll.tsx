@@ -1,12 +1,18 @@
 import React, { PropsWithChildren } from 'react';
-import { HTMLMotionProps, motion } from 'framer-motion';
+import '@/styles/scrollSnap.scss';
+import { Column } from '@artimisjs/ui';
 
-type SnapScroppProps = PropsWithChildren & HTMLMotionProps<'div'>;
+type SnapScroppProps = PropsWithChildren;
 
-const SnapScroll = ({ children, ...props }: SnapScroppProps) => (
-  <motion.div className="h-[100vh]" {...props}>
-    {children}
-  </motion.div>
-);
+const SnapScroll = ({ children, ...props }: SnapScroppProps) => {
+  return (
+    <Column
+      className="scroll-snap-mandatory pt-4 pb-20 h-screen gap-16"
+      {...props}
+    >
+      {children}
+    </Column>
+  );
+};
 
 export default SnapScroll;

@@ -9,9 +9,9 @@ import React from 'react';
 const NewsScreen = () => {
   return (
     <main>
-      <Column className="px-4 gap-2 justify-between min-h-[86vh] max-h-[88vh] pt-[8vh]">
+      <Column className="gap-2 justify-between h-screen pt-[8vh]">
         <Row
-          className="py-4 gap-4 border-b-[1px]text-[#343434] bg-accent fixed top-0 w-full z-20"
+          className="py-4 px-4  gap-4 border-b-[1px]text-[#343434] bg-accent fixed top-0 w-full z-20"
           align="centerHorizontal"
         >
           <FontAwesomeIcon
@@ -24,11 +24,11 @@ const NewsScreen = () => {
           </Text>
         </Row>
 
-        {Array.from({ length: 5 }).map(() => (
-          <SnapScroll>
+        <SnapScroll>
+          {Array.from({ length: 5 }).map(() => (
             <NewsFull />
-          </SnapScroll>
-        ))}
+          ))}
+        </SnapScroll>
       </Column>
     </main>
   );

@@ -34,7 +34,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'variety.com',
+        hostname: 'media.cnn.com',
         port: '',
         pathname: '/**',
       }

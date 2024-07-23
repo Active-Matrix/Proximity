@@ -17,7 +17,7 @@ const NewsCoverImage = ({
   newsTags,
 }: NewsCoverImageProps) => {
   return (
-    <Card height="fit" width="full" radius="xxl" className="min-h-44">
+    <Card height="fit" width="full" radius="xxl" className="h-48">
       <Card.Backdrop className="h-full w-full">
         <StoryImage src={newsImageUrl} alt={newsAltText} />
       </Card.Backdrop>

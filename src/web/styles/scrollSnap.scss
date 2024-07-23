@@ -1,0 +1,9 @@
+.scroll-snap-start {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.scroll-snap-mandatory {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}

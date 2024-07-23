@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Card } from '@artimisjs/ui';
 import NewsInteractions from './NewsInteractions';
 import NewsContent from './NewsContent';
 import NewsTitle from './NewsTitle';
 import NewsCoverImage from './NewsCoverImage';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import '@/styles/scrollSnap.scss';
 
-const NewsFull = () => {
+const NewsFull = ({ className }: { className?: string }) => {
+  //#region
   const newsTitle =
-    'Harris will seek Democratic nomination and could be the first Black woman and Asian American to lead a major party ticket';
+    'Supreme Court declines to halt former Colorado official’s trial on charges related to election security breach';
   const newsContent =
-    'Vice President Kamala Harris said she plans to seek the Democratic nomination after President Joe Biden stepped aside and endorsed her, setting up a push that could make her the first Black woman and first Asian American to lead the ticket of a major political party.';
+    'The Supreme Court on Monday turned down a request from a former Colorado county clerk to halt her upcoming trial on charges stemming from her alleged involvement in an apparent security breach at the county’s election offices in 2021';
   const storyImageUrl =
-    'https://variety.com/wp-content/uploads/2024/07/GettyImages-2161323413.jpg?w=1000&h=667&crop=1&resize=1360%2C907';
+    'https://media.cnn.com/api/v1/images/stellar/prod/ap23100653194921.jpg';
   const newsAltText = 'cover image of news';
   const newsReadTime = 11;
   const newsTags = ['latest'];
   const newsSource = 'CBC';
   const newsSourceLogoUrl = 'https://ik.imagekit.io/geeekg65rf/Vector-6.png';
+  //#endregion
+
+  const targetRef = useRef(null);
 
   return (
-    <section className="h-[92vh]">
+    <motion.section
+      ref={targetRef}
+      className={cn('p-2 scroll-snap-start', className)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <Card
         width="full"
         height="full"
@@ -39,7 +51,7 @@ const NewsFull = () => {
         newsSource={newsSource}
         newsSourceLogoUrl={newsSourceLogoUrl}
       />
-    </section>
+    </motion.section>
   );
 };
 
