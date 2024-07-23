@@ -12,14 +12,16 @@ const StoryFooter: React.FC<StoryFooterProps> = ({
   storyReadTime,
 }) => (
   <Card.Footer className="w-full bottom-0 flex justify-between items-center px-4 pb-2 z-[8]">
-    <Text className="text-white font-semibold">
+    <Text className="text-white font-semibold" size="sm">
       {storyTags.map((storyTag) => (
         <span key={storyTag} className="mr-1">
           #{storyTag.toLowerCase()}
         </span>
       ))}
     </Text>
-    <Text className="text-white font-semibold">{storyReadTime} min read</Text>
+    <Text className="text-white font-semibold" size="sm">
+      {storyReadTime} min read
+    </Text>
   </Card.Footer>
 );
 
