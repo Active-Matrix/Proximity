@@ -24,7 +24,7 @@ const StoryOverview: React.FC<StoryOverviewProps> = ({
   storyReadTime,
 }) => {
   return (
-    <Column className="gap-2  w-[94vw] scroll-snap-center">
+    <Column className="gap-2 w-[94vw] scroll-snap-center">
       <Card
         height="fit"
         width="full"

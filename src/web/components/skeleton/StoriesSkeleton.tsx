@@ -25,7 +25,7 @@ const StoryAvatarSkeleton = () => {
 
 const StoryOverviewSkeleton = () => {
   return (
-    <Column className="gap-3 px-2 w-full">
+    <Column className="gap-3 px-3 w-full">
       <Card
         height="fit"
         width="full"
