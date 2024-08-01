@@ -1,5 +1,5 @@
 <p align="center"><u>
-<img alt="Proximity Logo" align=center height=100 src="https://raw.githubusercontent.com/Archive-Matrix/Proximity/main/src/web/public/icon-transparent-white.png?token=GHSAT0AAAAAACUBP4T5VMRGSNMAJQXAARN2ZVLL66A"/>
+<img alt="Proximity Logo" align=center height=120 src="https://ik.imagekit.io/geeekg65rf/image.png"/>
   
 <a href="https://proximity-xi.vercel.app/">
   <h1 align=center>Proximity</h1>
