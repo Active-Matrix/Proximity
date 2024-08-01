@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# echo "⚙️ Building monorepo..."
+# Skip the build if running in a CI/CD environment
+if [ "$CI" = "true" ]; then
+    echo "Skipping build in CI/CD environment"
+    exit 0
+fi
+
+echo "⚙️ Building monorepo..."
 pnpm build
