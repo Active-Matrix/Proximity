@@ -1,3 +1,23 @@
+<p align="center"><u>
+<img alt="Proximity Logo" align=center height=100 src="https://raw.githubusercontent.com/Archive-Matrix/Proximity/main/src/web/public/icon-transparent-white.png?token=GHSAT0AAAAAACUBP4T5VMRGSNMAJQXAARN2ZVLL66A"/>
+  
+<a href="https://proximity-xi.vercel.app/">
+  <h1 align=center>Proximity</h1>
+</a>
+  
+</u></p>
+<p align="center"><u>
+  <img alt="MIT Licence" align="center" src="https://badgen.net/badge/license/MIT/white"/>&nbsp;
+  <img align="center" src="https://badgen.net/github/stars/Archive-Matrix/Proximity?color=white"/>&nbsp;
+  <img align="center" src="https://badgen.net/github/watchers/Archive-Matrix/Proximity?color=white"/>&nbsp;
+  <img align="center" src="https://badgen.net/github/forks/Archive-Matrix/Proximity?color=white"/>&nbsp;
+    
+  <a href="https://github.com/Archive-Matrix/Proximity/actions/workflows/vercel-production.yml">
+    <img alt="App Production status" align="center" src="https://github.com/Archive-Matrix/Proximity/actions/workflows/vercel-production.yml/badge.svg" />
+  </a>
+  
+</u></p>
+
 # This is a MonoRepo
 
 - Frontend /packages/web/\*
