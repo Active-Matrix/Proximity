@@ -34,7 +34,7 @@ const sizes = {
     lineHeight: 28 / 20,
   },
   xl: {
-    fontSize: 20,
+    fontSize: 19.6,
     lineHeight: 32 / 24,
   },
   xxl: {
@@ -42,7 +42,7 @@ const sizes = {
     lineHeight: 30 / 30,
   },
   xxxl: {
-    fontSize: 30,
+    fontSize: 27,
     lineHeight: 46 / 38,
   },
   huge: {

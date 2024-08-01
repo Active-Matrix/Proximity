@@ -5,7 +5,9 @@ import React from 'react';
 const SavedItemsScreen = () => {
   return (
     <Main>
-      <Header title="Saved" />
+      <Header title="Saved">
+        <Header.SearchBar placeholder="Find Saved News..." />
+      </Header>
       <NewsPreview />
     </Main>
   );

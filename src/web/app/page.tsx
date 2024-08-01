@@ -1,6 +1,7 @@
 'use client';
 import { GlobalContext } from '@/context/contextManager';
 import HomeScreen from '@/screens/HomeScreen';
+import NewsScreen from '@/screens/NewsScreen';
 import SavedItemsScreen from '@/screens/SavedItemsScreen';
 import { Fragment, useContext } from 'react';
 
@@ -18,7 +19,7 @@ const page = () => {
     },
     {
       href: '/news',
-      component: <div>News</div>,
+      component: <NewsScreen />,
     },
   ];
 

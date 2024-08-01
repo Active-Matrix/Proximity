@@ -32,7 +32,7 @@ const BottomBar = () => {
     },
   ];
   return (
-    <section className="fixed bottom-0 w-full h-[74px] bg-gradient-to-t from-[#ffffffd5] via-[#ffffff97] to-[#fff0] px-4 pb-3">
+    <section className="fixed bottom-0 w-full h-[70px] bg-gradient-to-t from-[#ffffffd5] via-[#ffffff97] to-[#fff0] px-3 pb-2 z-[99]">
       <Card
         width="full"
         height="full"

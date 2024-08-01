@@ -8,6 +8,8 @@ import { GlobalContext } from '@/context/contextManager';
 import { StoryType } from '@/types';
 import { getAllStories } from '@/utils/index';
 import { StoriesSkeleton, StoryOverviewSkeleton } from '@/components/skeleton';
+import '@/styles/scrollSnap.scss';
+import StoriesScroll from './StoriesScroll';
 
 const Stories = () => {
   const { stories, setStories, selectedSourceID, setSelectedSourceID } =
@@ -36,14 +38,10 @@ const Stories = () => {
     setTimeout(() => setIsPreviewLoading(false), 420);
   }, [selectedSourceID, triggerRefetch]);
 
-  if (stories === null) {
-    return <StoriesSkeleton />;
-  }
-
-  return (
+  return selectedSource ? (
     <Column align="start" className="gap-4">
       <HorizontalScroll>
-        <Row className="flex justify-center items-center gap-2 px-2">
+        <Row className="flex justify-center items-center gap-3 px-2">
           {stories?.map((story) => (
             <StoryAvatar
               avatar={story.avatar}
@@ -55,23 +53,14 @@ const Stories = () => {
         </Row>
       </HorizontalScroll>
 
-      {selectedSource ? (
-        isPreviewLoading ? (
-          <StoryOverviewSkeleton />
-        ) : (
-          <StoryOverview
-            coverImage={selectedSource.stories[0].coverImage}
-            sourceAvatar={selectedSource.avatar}
-            sourceName={selectedSource.code}
-            storyTitle={selectedSource.stories[0].title}
-            storyTags={selectedSource.stories[0].tags}
-            storyReadTime={selectedSource.stories[0].readTime}
-          />
-        )
-      ) : (
+      {isPreviewLoading ? (
         <StoryOverviewSkeleton />
+      ) : (
+        <StoriesScroll selectedSource={selectedSource} />
       )}
     </Column>
+  ) : (
+    <StoriesSkeleton />
   );
 };
 

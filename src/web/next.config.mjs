@@ -31,6 +31,12 @@ const nextConfig = {
         hostname: 'ik.imagekit.io',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.cnn.com',
+        port: '',
+        pathname: '/**',
       }
     ]
   }
