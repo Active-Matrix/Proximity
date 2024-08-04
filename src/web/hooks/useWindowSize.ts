@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 
 // This hook determine if the current view is mobile/tablet
-export const useIsMobile = (breakpoint = 1024) => {
+export const useWindowSize = (breakpoint = 1024) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= breakpoint);
 
   useLayoutEffect(() => {
@@ -14,5 +14,5 @@ export const useIsMobile = (breakpoint = 1024) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [breakpoint]);
 
-  return isMobile;
+  return isMobile ? "mobile" : "desktop";
 };
