@@ -2,7 +2,6 @@ import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
 import { Row } from '@artimisjs/ui';
 import {
-  faArrowLeft,
   faEllipsisVertical,
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';

@@ -20,15 +20,15 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
   href,
 }) => {
   return (
-    <Link href={href}>
+    <Link href={href} className="w-full">
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex-center"
+        className="bg-transparent p-2 flex items-start justify-start"
       >
         <Row
           align="center"
-          className="py-2 pb-4 border-b-[1px] justify-start gap-2"
+          className="py-2 pb-4 border-b-[1px] justify-start gap-2 w-full"
         >
           <Image
             src={src}

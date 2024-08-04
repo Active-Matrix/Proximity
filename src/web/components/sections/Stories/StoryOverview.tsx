@@ -24,12 +24,12 @@ const StoryOverview: React.FC<StoryOverviewProps> = ({
   storyReadTime,
 }) => {
   return (
-    <Column className="gap-2 w-[94vw] scroll-snap-center">
+    <Column className="gap-2 w-[94vw] lg:w-[50vw] scroll-snap-center">
       <Card
         height="fit"
         width="full"
         radius="xxl"
-        className="h-[26vh] text-wrap"
+        className="h-[26vh] lg:h-[42vh] text-wrap"
       >
         <Card.Backdrop className="h-full w-full">
           <StoryImage

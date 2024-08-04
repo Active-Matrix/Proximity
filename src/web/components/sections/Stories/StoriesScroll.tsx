@@ -9,7 +9,7 @@ const StoriesScroll = ({ selectedSource }: { selectedSource: StoryType }) => {
     <HorizontalScroll
       className={cn(
         'px-2 gap-3 scroll-snap-horizontal',
-        selectedSource.stories.length <= 1 && 'flex-center'
+        selectedSource.stories.length <= 1 && 'flex-center lg:flex-start'
       )}
     >
       {selectedSource.stories.map((story, index) => (
