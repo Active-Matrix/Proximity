@@ -30,7 +30,7 @@ const StoryOverviewSkeleton = () => {
         height="fit"
         width="full"
         radius="xxl"
-        className={cn('h-[26vh]', animate)}
+        className={cn('h-[26vh] lg:h-[42vh] ', animate)}
       >
         <Card.Backdrop className="h-full w-full" />
       </Card>

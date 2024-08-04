@@ -37,7 +37,7 @@ const NewsPreview = () => {
   }
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col items-start w-full">
       {newsPreview?.map((news, index) => (
         <PreviewCard
           key={`${index}-${news.href}`}
