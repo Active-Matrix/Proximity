@@ -24,18 +24,18 @@ const PreviewCard: React.FC<PreviewCardProps> = ({
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex items-start justify-start"
+        className="bg-transparent p-2 flex items-start justify-start lg:w-[24vw] lg:border rounded-2xl"
       >
         <Row
           align="center"
-          className="py-2 pb-4 border-b-[1px] justify-start gap-2 w-full"
+          className="py-2 pb-4 border-b-[1px] lg:border-none justify-start gap-2 w-full lg:flex-col lg:justify-start lg:items-start lg:p-0"
         >
           <Image
             src={src}
             alt={title}
-            height={120}
-            width={120}
-            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
+            height={300}
+            width={300}
+            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center lg:max-w-full lg:min-w-full lg:h-52"
           />
           <Column className="h-32 pb-2 w-full justify-between">
             <Text
