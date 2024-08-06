@@ -26,7 +26,7 @@ const SearchBar = ({ placeholder }: { placeholder: string }) => {
   return (
     <Row
       align="center"
-      className="bg-[#f2f4f765] border-[1px] border-[#DBDBDB] rounded-3xl lg:rounded-full px-4 h-12 lg:h-14 w-full gap-4 lg:w-[42%]"
+      className="bg-[#f2f4f765] border-[1px] border-[#DBDBDB] rounded-3xl lg:rounded-full px-4 h-12 lg:h-[3.2rem] w-full gap-4 lg:w-[42%]"
     >
       <FontAwesomeIcon
         icon={faMagnifyingGlass}

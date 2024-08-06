@@ -48,6 +48,7 @@ export default function HomeScreen() {
       <Suspense fallback={<StoriesSkeleton />}>
         <Stories />
       </Suspense>
+
       <div className="flex-center flex-col gap-2 lg:hidden">
         <Suspense fallback={<TopicsSkeleton />}>
           <Topics />

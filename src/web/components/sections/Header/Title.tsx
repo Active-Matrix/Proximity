@@ -17,10 +17,7 @@ const Title = ({ title, showLogo, children }: TitleProps) => {
   const screen = useWindowSize();
   return (
     <Fragment>
-      <Row
-        align="center"
-        className="justify-between w-full px-2 lg:px-0"
-      >
+      <Row align="center" className="justify-between w-full px-2 lg:px-0">
         <Row align="centerHorizontal" className="lg:gap-4">
           {showLogo && (
             <Image
@@ -28,11 +25,11 @@ const Title = ({ title, showLogo, children }: TitleProps) => {
               alt="icon"
               height={320}
               width={320}
-              className="object-contain object-center h-16 w-16 hidden lg:flex"
+              className="object-contain object-center h-14 w-14 hidden lg:flex"
             />
           )}
           <Text
-            size={screen === 'mobile' ? '3x' : '5x'}
+            size={screen === 'mobile' ? '3x' : '4x'}
             className="font-[700] lg:font[500]"
           >
             {title}
@@ -40,7 +37,7 @@ const Title = ({ title, showLogo, children }: TitleProps) => {
         </Row>
 
         {/* <FontAwesomeIcon icon={faEllipsisVertical} size="xl" className="p-1" /> */}
-        <Row align="end" className="gap-4 w-full items-center">
+        <Row align="end" className="gap-6 w-full items-center">
           {screen !== 'mobile' && children}
 
           <Avatar>

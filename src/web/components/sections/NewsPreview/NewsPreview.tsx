@@ -3,7 +3,7 @@ import PreviewCard from '@/components/ui/previewCard';
 import { GlobalContext } from '@/context/contextManager';
 import { getNewsPreview } from '@/utils/getNewsPreview';
 import React, { useContext, useEffect, useState } from 'react';
-import { Column } from '@artimisjs/ui';
+import { Column, Row } from '@artimisjs/ui';
 import { NewsPreviewSkeleton } from '@/components/skeleton';
 
 const NewsPreview = () => {
@@ -39,14 +39,23 @@ const NewsPreview = () => {
   return (
     <section className="flex flex-col lg:flex-row items-start w-full">
       {newsPreview?.map((news, index) => (
-        <PreviewCard
-          key={`${index}-${news.href}`}
-          href={news.href}
-          tags={news.tags}
-          readTime={news.readTime}
-          src={news.src}
-          title={news.title}
-        />
+        <PreviewCard key={`${index}-${news.href}`} href={news.href}>
+          <PreviewCard.PreviewImage
+            src={news.src}
+            alt={news.title}
+            height={300}
+            width={300}
+            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center lg:max-w-full lg:min-w-full lg:h-52"
+          />
+          <Column className="h-32 pb-2 w-full justify-between">
+            <PreviewCard.Title title={news.title} />
+
+            <Row className="w-full justify-between pr-4 opacity-70">
+              <PreviewCard.Tags tags={news.tags} />
+              <PreviewCard.ReadTime readTime={news.readTime} />
+            </Row>
+          </Column>
+        </PreviewCard>
       ))}
     </section>
   );
