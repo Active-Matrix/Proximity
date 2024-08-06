@@ -37,7 +37,7 @@ const NewsPreview = () => {
   }
 
   return (
-    <section className="flex flex-col lg:flex-row items-start w-full">
+    <section className="flex flex-col items-start w-full">
       {newsPreview?.map((news, index) => (
         <PreviewCard key={`${index}-${news.href}`} href={news.href}>
           <PreviewCard.PreviewImage
@@ -45,7 +45,7 @@ const NewsPreview = () => {
             alt={news.title}
             height={300}
             width={300}
-            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center lg:max-w-full lg:min-w-full lg:h-52"
+            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
           />
           <Column className="h-32 pb-2 w-full justify-between">
             <PreviewCard.Title title={news.title} />

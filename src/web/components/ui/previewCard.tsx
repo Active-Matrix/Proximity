@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 interface PreviewCardProps extends PropsWithChildren {
   href: string;
+  border?: boolean;
 }
 
 interface TagsProps {
@@ -20,17 +21,17 @@ interface ImageProps {
   className?: string;
 }
 
-const PreviewCard = ({ href, children }: PreviewCardProps) => {
+const PreviewCard = ({ href, children, border = true }: PreviewCardProps) => {
   return (
     <Link href={href} className="w-full">
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex items-start justify-start lg:w-[24vw] lg:border rounded-2xl"
+        className="bg-transparent p-2 flex items-start justify-start rounded-2xl"
       >
         <Row
           align="center"
-          className="py-2 pb-4 border-b-[1px] lg:border-none justify-start gap-2 w-full lg:flex-col lg:justify-start lg:items-start lg:p-0"
+          className={`py-2 pb-4 justify-start gap-2 w-full ${border && 'border-b-[1px]'}`}
         >
           {children}
         </Row>
@@ -46,7 +47,7 @@ const PreviewImage: React.FC<ImageProps> = ({ src, alt }) => {
       alt={alt}
       height={300}
       width={300}
-      className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center lg:max-w-full lg:min-w-full lg:h-52"
+      className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
     />
   );
 };

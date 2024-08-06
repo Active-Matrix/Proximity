@@ -1,11 +1,11 @@
 'use client';
-import { Header } from '@/components/sections';
+import { AsidePreview, Header } from '@/components/sections';
 import {
   NewsPreviewSkeleton,
   StoriesSkeleton,
   TopicsSkeleton,
 } from '@/components/skeleton';
-import { Column } from '@artimisjs/ui';
+import { Column, Flex } from '@artimisjs/ui';
 import { Main } from '@/components/layout';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
@@ -45,9 +45,13 @@ export default function HomeScreen() {
       <Header title="Proximity">
         <Header.SearchBar placeholder="Find Interesting Topics..." />
       </Header>
-      <Suspense fallback={<StoriesSkeleton />}>
+
+      <div className="flex w-full h-full">
+        {/* <Suspense fallback={<StoriesSkeleton />}> */}
         <Stories />
-      </Suspense>
+        {/* </Suspense> */}
+        <AsidePreview />
+      </div>
 
       <div className="flex-center flex-col gap-2 lg:hidden">
         <Suspense fallback={<TopicsSkeleton />}>
