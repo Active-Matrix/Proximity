@@ -47,9 +47,9 @@ export default function HomeScreen() {
       </Header>
 
       <div className="flex w-full h-full">
-        {/* <Suspense fallback={<StoriesSkeleton />}> */}
-        <Stories />
-        {/* </Suspense> */}
+        <Suspense fallback={<StoriesSkeleton />}>
+          <Stories />
+        </Suspense>
         <AsidePreview />
       </div>
 

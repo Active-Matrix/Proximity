@@ -13,7 +13,7 @@ const StoryHeader: React.FC<StoryHeaderProps> = ({
   sourceName,
   sourceAvatar,
 }) => (
-  <Card.Header className="p-4 top-0 flex justify-between items-center w-full">
+  <Card.Header className="p-4 top-0 flex justify-between items-center w-full lg:hidden">
     <StoryBookMark />
 
     <Row

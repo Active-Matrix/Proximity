@@ -34,7 +34,7 @@ const AsidePreview = () => {
   }
 
   return (
-    <aside className="hidden lg:block h-full w-full flex-1 border-l-2 min-w-[20vw] px-4">
+    <aside className="hidden lg:block h-full w-full flex-1 border-l-[1px] min-w-[20vw] px-4">
       <Text size="2x" className="font-[600] px-3 pb-2">
         Latest For You
       </Text>

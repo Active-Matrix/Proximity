@@ -18,7 +18,7 @@ const StoryAvatar: React.FC<StoryAvatarProps> = ({ avatar, name, id }) => {
   const rowClasses = useMemo(
     () =>
       cn(
-        'h-[62px] w-[62px] lg:h-[70px] lg:w-[70px] border-[1px] border-[#DBDBDB] opacity-[86%]',
+        'h-[62px] w-[62px] lg:h-[78px] lg:w-[78px] border-[1px] border-[#DBDBDB] opacity-[86%]',
         'rounded-full overflow-hidden transition-all duration-300',
         isSelected ? 'bg-black' : 'bg-accent'
       ),

@@ -11,7 +11,7 @@ const StoryFooter: React.FC<StoryFooterProps> = ({
   storyTags,
   storyReadTime,
 }) => (
-  <Card.Footer className="w-full bottom-0 flex justify-between items-center px-4 pb-2 z-[8]">
+  <Card.Footer className="w-full bottom-0 flex justify-between items-center px-4 pb-2 z-[8] lg:hidden">
     <Text className="text-white font-semibold" size="sm">
       {storyTags.map((storyTag) => (
         <span key={storyTag} className="mr-1">

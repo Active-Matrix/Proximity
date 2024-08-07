@@ -4,7 +4,7 @@ import { Text } from '@/components/ui/text';
 const StoryTitle = ({ storyTitle }: { storyTitle: string }) => (
   <Text
     size="lg"
-    className="px-2 w-[92vw] lg:w-[50vw] text-[#1e1e1e] font-[500] line-clamp-2 text-wrap"
+    className="px-2 w-[92vw] lg:w-[22vw] text-[#1e1e1e] font-[500] lg:font-[600] line-clamp-2 text-wrap"
   >
     {storyTitle}
   </Text>
