@@ -53,7 +53,7 @@ export default function HomeScreen() {
         <AsidePreview />
       </div>
 
-      <div className="flex-center flex-col gap-2 lg:hidden">
+      <div className="flex-center flex-col gap-2">
         <Suspense fallback={<TopicsSkeleton />}>
           <Topics />
         </Suspense>

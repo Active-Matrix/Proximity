@@ -38,11 +38,11 @@ const AsidePreview = () => {
       <Text size="2x" className="font-[600] px-3 pb-2">
         Latest For You
       </Text>
-      {newsPreview?.slice(1, 5).map((news, index) => (
+      {newsPreview?.slice(0, 3).map((news, index) => (
         <PreviewCard
           key={`${index}-${news.href}`}
           href={news.href}
-          border={index !== 3}
+          border={index !== 2}
         >
           {/* <PreviewCard.PreviewImage
             src={news.src}
