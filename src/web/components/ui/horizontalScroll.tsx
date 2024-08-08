@@ -13,7 +13,10 @@ const HorizontalScroll = ({
 }: HorizontalScrollProps) => {
   return (
     <Row
-      className={cn('w-screen overflow-x-scroll whitespace-nowrap', className)}
+      className={cn(
+        'w-screen lg:w-full overflow-x-scroll whitespace-nowrap',
+        className
+      )}
       {...rest}
     >
       {children}

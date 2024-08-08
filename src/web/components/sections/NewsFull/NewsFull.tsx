@@ -4,7 +4,7 @@ import NewsInteractions from './NewsInteractions';
 import NewsContent from './NewsContent';
 import NewsTitle from './NewsTitle';
 import NewsCoverImage from './NewsCoverImage';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import '@/styles/scrollSnap.scss';
 

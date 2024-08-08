@@ -1,7 +1,6 @@
 'use client';
 import { Column, Row } from '@artimisjs/ui';
 import StoryAvatar from './storyAvatar';
-import StoryOverview from './StoryOverview';
 import HorizontalScroll from '@/components/ui/horizontalScroll';
 import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '@/context/contextManager';
@@ -39,9 +38,12 @@ const Stories = () => {
   }, [selectedSourceID, triggerRefetch]);
 
   return selectedSource ? (
-    <Column align="start" className="gap-4">
+    <Column
+      align="start"
+      className="gap-4 lg:gap-6 w-full h-full lg:w-[76%] lg:mt-2 lg:overflow-x-hidden"
+    >
       <HorizontalScroll>
-        <Row className="flex justify-center items-center gap-3 lg:gap-6 px-2">
+        <Row className="flex justify-center items-center gap-3 lg:gap-8 px-2">
           {stories?.map((story) => (
             <StoryAvatar
               avatar={story.avatar}

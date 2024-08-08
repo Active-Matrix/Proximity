@@ -1,68 +1,89 @@
-import { Card, Column, Row } from '@artimisjs/ui';
+import { Card, Flex, Row } from '@artimisjs/ui';
 import { Text } from './text';
 import Image from 'next/image';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
-interface PreviewCardProps {
-  title: string;
-  src: string;
-  tags: string[];
-  readTime: number;
+interface PreviewCardProps extends PropsWithChildren {
   href: string;
+  border?: boolean;
+  className?: string;
 }
 
-const PreviewCard: React.FC<PreviewCardProps> = ({
-  title,
-  src,
-  tags,
-  readTime,
+interface TagsProps {
+  tags: string[];
+}
+
+interface ImageProps {
+  src: string;
+  alt: string;
+  height: number;
+  width: number;
+  className?: string;
+}
+
+const PreviewCard = ({
   href,
-}) => {
+  children,
+  className,
+  border = true,
+}: PreviewCardProps) => {
   return (
     <Link href={href} className="w-full">
       <Card
         width="full"
         height="fit"
-        className="bg-transparent p-2 flex items-start justify-start"
+        className="bg-transparent p-2 flex items-start justify-start rounded-2xl lg:justify-between"
       >
         <Row
           align="center"
-          className="py-2 pb-4 border-b-[1px] justify-start gap-2 w-full"
+          className={cn(
+            'py-2 pb-4 justify-start gap-2 w-full lg:flex-col',
+            border && 'border-b-[1px]',
+            className
+          )}
         >
-          <Image
-            src={src}
-            alt={title}
-            height={120}
-            width={120}
-            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
-          />
-          <Column className="h-32 pb-2 w-full justify-between">
-            <Text
-              className="p-1 line-clamp-3 overflow-hidden font-[500] text-[#343434]"
-              size="md"
-            >
-              {title}
-            </Text>
-            <Row className="w-full justify-between pr-4 opacity-70">
-              <Tags tags={tags} />
-              <Text
-                className="p-1 line-clamp-4 overflow-hidden font-[500]"
-                size="xs"
-              >
-                {readTime} min read
-              </Text>
-            </Row>
-          </Column>
+          {children}
         </Row>
       </Card>
     </Link>
   );
 };
 
-interface TagsProps {
-  tags: string[];
-}
+const PreviewImage: React.FC<ImageProps> = ({ src, alt }) => {
+  return (
+    <Flex
+      align="center"
+      className="h-32 min-w-32 w-32 max-w-32 rounded-2xl lg:w-full lg:min-w-full lg:max-w-full lg:rounded-none lg:h-52 overflow-hidden"
+    >
+      <Image
+        src={src}
+        alt={alt}
+        height={480}
+        width={480}
+        className="h-full w-full object-cover object-center lg:hover:scale-105 transition-all duration-300"
+      />
+    </Flex>
+  );
+};
+
+const Title: React.FC<{ title: string; className?: string }> = ({
+  title,
+  className,
+}) => {
+  return (
+    <Text
+      className={cn(
+        'p-1 line-clamp-3 overflow-hidden font-[500] text-[#343434] l',
+        className
+      )}
+      size="md"
+    >
+      {title}
+    </Text>
+  );
+};
 
 const Tags: React.FC<TagsProps> = ({ tags }) => {
   return (
@@ -78,5 +99,18 @@ const Tags: React.FC<TagsProps> = ({ tags }) => {
     </Text>
   );
 };
+
+const ReadTime: React.FC<{ readTime: number }> = ({ readTime }) => {
+  return (
+    <Text className="p-1 line-clamp-4 overflow-hidden font-[500]" size="xs">
+      {readTime} min read
+    </Text>
+  );
+};
+
+PreviewCard.PreviewImage = PreviewImage;
+PreviewCard.Title = Title;
+PreviewCard.Tags = Tags;
+PreviewCard.ReadTime = ReadTime;
 
 export default PreviewCard;

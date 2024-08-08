@@ -1,22 +1,20 @@
-'use client';
-import PreviewCard from '@/components/ui/previewCard';
-import { GlobalContext } from '@/context/contextManager';
-import { getNewsPreview } from '@/utils/getNewsPreview';
-import React, { useContext, useEffect, useState } from 'react';
-import { Column, Row } from '@artimisjs/ui';
 import { NewsPreviewSkeleton } from '@/components/skeleton';
+import PreviewCard from '@/components/ui/previewCard';
+import { NewsPreviewType } from '@/types';
+import { getNewsPreview } from '@/utils';
+import { Column, Row, Text } from '@artimisjs/ui';
+import React, { useEffect, useState } from 'react';
 
-const NewsPreview = () => {
-  const { selectedTopic, newsPreview, setNewsPreview } =
-    useContext(GlobalContext);
+const AsidePreview = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [newsPreview, setNewsPreview] = useState<NewsPreviewType[]>([]);
 
   useEffect(() => {
     const fetchNews = async () => {
       setIsLoading(true);
 
       const delay = new Promise((resolve) => setTimeout(resolve, 350));
-      const newsPromise = getNewsPreview(selectedTopic);
+      const newsPromise = getNewsPreview('for-you');
       const [res] = await Promise.all([newsPromise, delay]);
 
       setNewsPreview(res);
@@ -24,12 +22,11 @@ const NewsPreview = () => {
     };
 
     fetchNews();
-  }, [selectedTopic]);
-
+  }, []);
   if (isLoading) {
     return (
       <Column className="gap-4 w-full">
-        {[...Array(5)].map((_, index) => (
+        {[...Array(3)].map((_, index) => (
           <NewsPreviewSkeleton key={index} />
         ))}
       </Column>
@@ -37,32 +34,35 @@ const NewsPreview = () => {
   }
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 ">
-      {newsPreview?.map((news, index) => (
+    <aside className="hidden lg:block h-full w-full flex-1 border-l-[1px] min-w-[20vw] px-4">
+      <Text size="2x" className="font-[600] px-3 pb-2">
+        Latest For You
+      </Text>
+      {newsPreview?.slice(0, 3).map((news, index) => (
         <PreviewCard
           key={`${index}-${news.href}`}
           href={news.href}
-          className="lg:border-none"
+          border={index !== 2}
         >
-          <PreviewCard.PreviewImage
+          {/* <PreviewCard.PreviewImage
             src={news.src}
             alt={news.title}
             height={300}
             width={300}
             className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
-          />
-          <Column className="h-32 pb-2 w-full justify-between">
-            <PreviewCard.Title title={news.title} className="lg:mt-1" />
+          /> */}
+          <Column className="w-full justify-between">
+            <PreviewCard.Title title={news.title} />
 
-            <Row className="w-full justify-between pr-4 opacity-70">
+            <Row className="w-full justify-between opacity-70">
               <PreviewCard.Tags tags={news.tags} />
               <PreviewCard.ReadTime readTime={news.readTime} />
             </Row>
           </Column>
         </PreviewCard>
       ))}
-    </section>
+    </aside>
   );
 };
 
-export default NewsPreview;
+export default AsidePreview;

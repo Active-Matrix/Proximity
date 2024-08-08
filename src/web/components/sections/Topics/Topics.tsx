@@ -30,7 +30,7 @@ const Topics = () => {
   }, [selectedScreen]);
 
   return topics ? (
-    <section className="mt-4 w-screen overflow-x-hidden">
+    <section className="mt-4 w-screen lg:w-full lg:mt-0 overflow-x-hidden">
       <HorizontalScroll>
         <Row className="flex justify-center items-center gap-2 px-2 pr-20">
           {topics?.map((topic, index) => (

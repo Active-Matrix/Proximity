@@ -8,7 +8,7 @@ const StoriesScroll = ({ selectedSource }: { selectedSource: StoryType }) => {
   return (
     <HorizontalScroll
       className={cn(
-        'px-2 gap-3 scroll-snap-horizontal',
+        'px-2 gap-3 scroll-snap-horizontal lg:pr-4 lg:justify-between',
         selectedSource.stories.length <= 1 && 'flex-center lg:flex-start'
       )}
     >

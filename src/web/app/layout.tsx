@@ -8,8 +8,8 @@ import '@artimisjs/ui/style';
 import '@/styles/globals.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-import { ContextManager } from '@/context/contextManager';
 import BottomBar from '@/components/sections/BottomBar/BottomBar';
+import { ContextManager } from '@/context/contextManager';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -31,12 +31,12 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen relative overflow-x-hidden font-sans antialiased flex flex-col md:flex-row',
+          'min-h-screen max-w-[100vw] relative overflow-x-hidden font-sans antialiased lg:px-[3vw] lg:pt-4',
           fontSans.variable
         )}
       >
         <ContextManager>
-          {children}
+          <div>{children}</div>
           <BottomBar />
         </ContextManager>
       </body>
