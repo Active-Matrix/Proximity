@@ -39,7 +39,11 @@ const NewsPreview = () => {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 ">
       {newsPreview?.map((news, index) => (
-        <PreviewCard key={`${index}-${news.href}`} href={news.href}>
+        <PreviewCard
+          key={`${index}-${news.href}`}
+          href={news.href}
+          className="lg:border-none"
+        >
           <PreviewCard.PreviewImage
             src={news.src}
             alt={news.title}
@@ -48,7 +52,7 @@ const NewsPreview = () => {
             className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
           />
           <Column className="h-32 pb-2 w-full justify-between">
-            <PreviewCard.Title title={news.title} />
+            <PreviewCard.Title title={news.title} className="lg:mt-1" />
 
             <Row className="w-full justify-between pr-4 opacity-70">
               <PreviewCard.Tags tags={news.tags} />

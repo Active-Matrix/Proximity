@@ -3,10 +3,12 @@ import { Text } from './text';
 import Image from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 interface PreviewCardProps extends PropsWithChildren {
   href: string;
   border?: boolean;
+  className?: string;
 }
 
 interface TagsProps {
@@ -21,7 +23,12 @@ interface ImageProps {
   className?: string;
 }
 
-const PreviewCard = ({ href, children, border = true }: PreviewCardProps) => {
+const PreviewCard = ({
+  href,
+  children,
+  className,
+  border = true,
+}: PreviewCardProps) => {
   return (
     <Link href={href} className="w-full">
       <Card
@@ -31,7 +38,11 @@ const PreviewCard = ({ href, children, border = true }: PreviewCardProps) => {
       >
         <Row
           align="center"
-          className={`py-2 pb-4 justify-start gap-2 w-full lg:flex-col ${border && 'border-b-[1px] lg:border-none'}`}
+          className={cn(
+            'py-2 pb-4 justify-start gap-2 w-full lg:flex-col',
+            border && 'border-b-[1px]',
+            className
+          )}
         >
           {children}
         </Row>
@@ -49,18 +60,24 @@ const PreviewImage: React.FC<ImageProps> = ({ src, alt }) => {
       <Image
         src={src}
         alt={alt}
-        height={300}
-        width={300}
+        height={480}
+        width={480}
         className="h-full w-full object-cover object-center lg:hover:scale-105 transition-all duration-300"
       />
     </Flex>
   );
 };
 
-const Title: React.FC<{ title: string }> = ({ title }) => {
+const Title: React.FC<{ title: string; className?: string }> = ({
+  title,
+  className,
+}) => {
   return (
     <Text
-      className="p-1 line-clamp-3 overflow-hidden font-[500] text-[#343434] lg:mt-1"
+      className={cn(
+        'p-1 line-clamp-3 overflow-hidden font-[500] text-[#343434] l',
+        className
+      )}
       size="md"
     >
       {title}

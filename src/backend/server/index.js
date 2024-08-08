@@ -18,7 +18,7 @@ app.get('/news', (req, res) => {
       id: "newsListHPiuh",
       title:
         "Exploring the Cosmic Frontier: A Glimpse into Humanity's Interstellar Future",
-      src: 'https://ik.imagekit.io/geeekg65rf/image.png',
+      src: 'https://ik.imagekit.io/geeekg65rf/image9068tn0uh.png',
       tags: ['ai', 'gpt-4'],
       readTime: 7,
       href: '#',
