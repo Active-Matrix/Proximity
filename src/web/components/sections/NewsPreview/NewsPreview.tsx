@@ -37,7 +37,7 @@ const NewsPreview = () => {
   }
 
   return (
-    <section className="flex flex-col items-start w-full">
+    <section className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 ">
       {newsPreview?.map((news, index) => (
         <PreviewCard key={`${index}-${news.href}`} href={news.href}>
           <PreviewCard.PreviewImage
