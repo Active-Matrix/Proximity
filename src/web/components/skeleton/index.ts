@@ -1,6 +1,7 @@
 import { StoriesSkeleton, StoryAvatarSkeleton, StoryOverviewSkeleton } from "./StoriesSkeleton";
 import { NewsPreviewSkeleton } from './NewsPreviewSkeleton'
 import TopicsSkeleton from "./TopicsSkeleton";
+import { AsidePreview } from "../sections";
 
 export {
   StoriesSkeleton,
@@ -8,4 +9,5 @@ export {
   StoryAvatarSkeleton,
   StoryOverviewSkeleton,
   TopicsSkeleton,
+  AsidePreview
 }

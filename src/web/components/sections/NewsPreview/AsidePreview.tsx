@@ -1,4 +1,4 @@
-import { NewsPreviewSkeleton } from '@/components/skeleton';
+import { AsidePreviewSkeleton } from '@/components/skeleton/AsidePreviewSkeleton';
 import PreviewCard from '@/components/ui/previewCard';
 import { NewsPreviewType } from '@/types';
 import { getNewsPreview } from '@/utils';
@@ -23,12 +23,15 @@ const AsidePreview = () => {
 
     fetchNews();
   }, []);
+
   if (isLoading) {
     return (
-      <Column className="gap-4 w-full">
-        {[...Array(3)].map((_, index) => (
-          <NewsPreviewSkeleton key={index} />
-        ))}
+      <Column className="hidden lg:block h-[50vh] w-full flex-1 border-l-[1px] min-w-[20vw] px-4">
+        <Column className="w-full justify-between h-full mt-[3.3rem]">
+          {[...Array(3)].map((_, index) => (
+            <AsidePreviewSkeleton key={index} />
+          ))}
+        </Column>
       </Column>
     );
   }
@@ -44,13 +47,6 @@ const AsidePreview = () => {
           href={news.href}
           border={index !== 2}
         >
-          {/* <PreviewCard.PreviewImage
-            src={news.src}
-            alt={news.title}
-            height={300}
-            width={300}
-            className="h-32 min-w-32 w-32 max-w-32 rounded-2xl object-cover object-center"
-          /> */}
           <Column className="w-full justify-between">
             <PreviewCard.Title title={news.title} />
 
