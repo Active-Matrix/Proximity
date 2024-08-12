@@ -8,7 +8,6 @@ import {
 import { Column, Flex } from '@artimisjs/ui';
 import { Main } from '@/components/layout';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
 
 // skeleton
 const Stories = dynamic(() => import('@/components/sections/Stories/Stories'), {
@@ -46,20 +45,14 @@ export default function HomeScreen() {
         <Header.SearchBar placeholder="Find Interesting Topics..." />
       </Header>
 
-      <div className="flex w-full h-full">
-        <Suspense fallback={<StoriesSkeleton />}>
-          <Stories />
-        </Suspense>
+      <div className="flex w-full h-full lg:h-[61vh]">
+        <Stories />
         <AsidePreview />
       </div>
 
-      <div className="flex-center flex-col gap-2">
-        <Suspense fallback={<TopicsSkeleton />}>
-          <Topics />
-        </Suspense>
-        <Suspense fallback={<NewsPreviewSkeleton />}>
-          <NewsPreview />
-        </Suspense>
+      <div className="flex-center flex-col lg:flex-start gap-2">
+        <Topics />
+        <NewsPreview />
       </div>
     </Main>
   );

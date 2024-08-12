@@ -10,6 +10,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import BottomBar from '@/components/sections/BottomBar/BottomBar';
 import { ContextManager } from '@/context/contextManager';
+import { Suspense } from 'react';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -37,7 +38,9 @@ export default function RootLayout({
       >
         <ContextManager>
           <div>{children}</div>
-          <BottomBar />
+          <Suspense>
+            <BottomBar />
+          </Suspense>
         </ContextManager>
       </body>
     </html>
