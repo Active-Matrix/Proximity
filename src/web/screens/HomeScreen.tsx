@@ -45,7 +45,7 @@ export default function HomeScreen() {
         <Header.SearchBar placeholder="Find Interesting Topics..." />
       </Header>
 
-      <div className="flex w-full h-[61vh]">
+      <div className="flex w-full h-full lg:h-[61vh]">
         <Stories />
         <AsidePreview />
       </div>
