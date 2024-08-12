@@ -3,31 +3,31 @@ import { GlobalContext } from '@/context/contextManager';
 import HomeScreen from '@/screens/HomeScreen';
 import NewsScreen from '@/screens/NewsScreen';
 import SavedItemsScreen from '@/screens/SavedItemsScreen';
-import { Fragment, useContext } from 'react';
+import { useContext } from 'react';
 
 const page = () => {
   const { selectedScreen } = useContext(GlobalContext);
 
   const screens = [
     {
-      href: '/',
+      id: 'home',
       component: <HomeScreen />,
     },
     {
-      href: '/saved',
+      id: 'saved',
       component: <SavedItemsScreen />,
     },
     {
-      href: '/news',
+      id: 'news',
       component: <NewsScreen />,
     },
   ];
 
   const SelectedScreenComponent = screens.find(
-    (screen) => screen.href === selectedScreen
+    (screen) => screen.id === selectedScreen
   )?.component;
 
-  return SelectedScreenComponent;
+  return SelectedScreenComponent || <HomeScreen />;
 };
 
 export default page;
