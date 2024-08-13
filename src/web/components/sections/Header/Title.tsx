@@ -1,12 +1,10 @@
 'use client';
 import { Row, Text } from '@artimisjs/ui';
-// import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Fragment, PropsWithChildren } from 'react';
 import Icon from '@/public/icon-transparent-black.png';
 import Image from 'next/image';
 import { useWindowSize } from '@/hooks';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import ProfileButton from './ProfileButton';
 
 interface TitleProps extends PropsWithChildren {
   title: string;
@@ -36,14 +34,9 @@ const Title = ({ title, showLogo, children }: TitleProps) => {
           </Text>
         </Row>
 
-        {/* <FontAwesomeIcon icon={faEllipsisVertical} size="xl" className="p-1" /> */}
         <Row align="end" className="gap-6 w-full items-center">
           {screen !== 'mobile' && children}
-
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+          <ProfileButton />
         </Row>
       </Row>
       {screen === 'mobile' && children}
