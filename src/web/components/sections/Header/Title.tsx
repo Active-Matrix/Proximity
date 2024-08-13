@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface TitleProps extends PropsWithChildren {
   title: string;
-  showLogo: boolean;
+  showLogo?: boolean;
 }
 
 const Title = ({ title, showLogo, children }: TitleProps) => {

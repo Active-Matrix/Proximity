@@ -1,21 +1,19 @@
 import { Input } from '@/components/ui/input';
-import { Row, Text } from '@artimisjs/ui';
-import {
-  faEllipsisVertical,
-  faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { Row } from '@artimisjs/ui';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { PropsWithChildren } from 'react';
 import Title from './Title';
 
 interface HeaderProps extends PropsWithChildren {
   title: string;
+  showLogo?: boolean;
 }
 
-const Header = ({ title, children }: HeaderProps) => {
+const Header = ({ title, children, showLogo }: HeaderProps) => {
   return (
     <header className="px-2 lg:px-0 pt-1 flex flex-col gap-4 lg:gap-0 relative bg-gradient-to-t from-[#fff0] via-[#d8f4f845] to-[#F6FEFE] lg:bg-gradient-to-t select-none">
-      <Title title={title} showLogo>
+      <Title title={title} showLogo={showLogo}>
         {children}
       </Title>
     </header>
