@@ -62,7 +62,7 @@ const ProfileButton = () => {
           <Row
             key={item.label}
             align="centerHorizontal"
-            className="gap-2 cursor-pointer py-2 hover:bg-accent px-4 rounded-2xl"
+            className="gap-2 cursor-pointer py-2 px-4 hover:bg-[#f9f9f9] rounded-2xl"
             onClick={() => handleClick(item.targetScreen)}
           >
             <FontAwesomeIcon icon={item.icon} />
