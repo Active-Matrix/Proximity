@@ -15,11 +15,10 @@ import {
 import React, { useContext } from 'react';
 import { Row, Text } from '@artimisjs/ui';
 import { GlobalContext } from '@/context/contextManager';
-import { cn } from '@/lib/utils';
 
 const ProfileButton = () => {
   const screen = useWindowSize();
-  const { setSelectedScreen, selectedScreen } = useContext(GlobalContext);
+  const { setSelectedScreen } = useContext(GlobalContext);
   const { setParams } = useUrlStateBridge();
 
   const handleClick = (screen: string) => {

@@ -1,6 +1,6 @@
 'use client';
 import { Row, Text } from '@artimisjs/ui';
-import React, { Fragment, PropsWithChildren } from 'react';
+import React, { Fragment, PropsWithChildren, Suspense } from 'react';
 import Icon from '@/public/icon-transparent-black.png';
 import Image from 'next/image';
 import { useWindowSize } from '@/hooks';
@@ -36,7 +36,9 @@ const Title = ({ title, showLogo, children }: TitleProps) => {
 
         <Row align="end" className="gap-6 w-full items-center">
           {screen !== 'mobile' && children}
-          <ProfileButton />
+          <Suspense>
+            <ProfileButton />
+          </Suspense>
         </Row>
       </Row>
       {screen === 'mobile' && children}
