@@ -41,7 +41,7 @@ const NewsPreview = dynamic(
 export default function HomeScreen() {
   return (
     <Main>
-      <Header title="Proximity">
+      <Header title="Proximity" showLogo>
         <Header.SearchBar placeholder="Find Interesting Topics..." />
       </Header>
 

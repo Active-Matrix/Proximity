@@ -1,7 +1,7 @@
 import { GlobalContext } from '@/context/contextManager';
 import { cn } from '@/lib/utils';
 import { Row } from '@artimisjs/ui';
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Text } from '@/components/ui/text';
 
 interface TopicButtonProps {
@@ -16,7 +16,7 @@ const TopicButton: React.FC<TopicButtonProps> = ({ id, label }) => {
     () =>
       cn(
         'h-10 px-5 rounded-[30px] gap-1 border-[1px] opacity-[86%]',
-        'transition-all duration-300 select-none',
+        'transition-all duration-300 select-none hover:border-[#0a0a0a] cursor-pointer',
         selectedTopic === id
           ? 'bg-black border-black'
           : 'bg-accent border-[#DFDFDF]'
