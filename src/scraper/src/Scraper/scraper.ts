@@ -124,11 +124,16 @@ export default class PuppeteerScraper implements Scraper {
 
   private processData(url: string, data: any[]): any[] {
     return data.map(item => {
-      if (item.image) {
-        item.image = `${url}/${item.image}`;
+      try {
+        new URLParser(item.image);
       }
+      catch (error) {
+        item.image = url.concat(item.image)
+      }
+
       return item;
-    });
+    })
+
   }
 
 

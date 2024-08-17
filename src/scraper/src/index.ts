@@ -4,27 +4,26 @@ import PuppeteerScraper, { ScraperConfig } from "./Scraper";
 const config: ScraperConfig = {
   container: [{
     element: 'div',
-    attribute: 'data-testid',
-    value: 'edinburgh-article',
+    attribute: 'data-component-name',
+    value: 'card',
   }],
   title: [
     {
-      element: 'h2',
-      attribute: 'data-testid',
-      value: 'card-headline'
+      element: 'span',
+      attribute: 'data-editable',
+      value: 'headline',
     }
   ],
   image: [
     {
       element: 'img',
-      attribute: 'data-testid',
-      value: 'card-media',
+
       resultAttribute: 'src'
     }
   ]
 }
 
-const url = "https://www.bbc.com/news"
+const url = "https://edition.cnn.com/?refresh=1"
 
 const main = async () => {
   const scraper = new PuppeteerScraper(url, config)
