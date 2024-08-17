@@ -1,11 +1,17 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 import URLParser from "../UrlParser/urlParser";
 
+interface ConfigProps {
+  element: string;
+  attribute?: string;
+  value?: string;
+  resultAttribute?: string;
+}
+
 export interface ScraperConfig {
-  attributeSelector: string[];
-  containerSelector: string[];
-  titleSelector: string[];
-  imageSelector: string[];
+  container: Omit<ConfigProps, "resultAttribute">[];
+  title: ConfigProps[];
+  image: ConfigProps[];
 }
 
 interface Scraper {
@@ -36,7 +42,7 @@ export default class PuppeteerScraper implements Scraper {
 
     await page.goto(url, { waitUntil: 'load' });
 
-    const data = await this.extractData(page, this.config, []);
+    const data = await this.extractData(page, this.config);
     const processData = this.processData(url, data)
 
     await this.closeBrowser(); //? close the browser
@@ -78,33 +84,42 @@ export default class PuppeteerScraper implements Scraper {
   * The extracted data is then returned as an array of objects.
   */
 
-  private async extractData(page: Page, config: ScraperConfig,
-    callbacks: Array<(element: Element, config: ScraperConfig) => string | null>): Promise<any[]> {
+  private async extractData(page: Page, config: ScraperConfig): Promise<any[]> {
     return page.evaluate((config: ScraperConfig) => {
-      const elements = Array.from(
-        document.querySelectorAll(`[${config.attributeSelector}="${config.containerSelector}"]`)
+      function getAttributeOrText(element: Element, config: ConfigProps) {
+        const matchedElement = element.querySelector(config.element);
+
+        if (!matchedElement) return null
+        if (!config.resultAttribute) return matchedElement.textContent?.trim()
+
+        // if attribute matches the value
+        if (config.attribute && config.value) {
+          if (matchedElement.getAttribute(config.attribute) === config.value)
+            return matchedElement.getAttribute(config.resultAttribute);
+        }
+
+        // return result attribute
+        return matchedElement.getAttribute(config.resultAttribute)
+      }
+
+      const containerElements = Array.from(
+        document.querySelectorAll(config.container.map(({ element, attribute, value }) =>
+          `${element}[${attribute}="${value}"]`
+        ).join(', '))
       );
-
-      const selectTitle = (element: Element, config: ScraperConfig): string | null => {
-        const selectedTitle = element.querySelector(`[${config.attributeSelector}="${config.titleSelector}"]`);
-        return selectedTitle?.getAttribute(config.titleSelector[0] || '') ||
-          selectedTitle?.textContent?.trim() ||
-          null;
-      }
-
-      const selectImage = (element: Element, config: ScraperConfig): string | null => {
-        const selectedImage = element.querySelector(config.imageSelector[0] || '');
-        return selectedImage?.getAttribute("src") || null;
-      }
-
-      return elements.map((element) => {
-        const result: { [key: string]: string | null } = {};
-        result.title = selectTitle(element, config);
-        result.image = selectImage(element, config);
+      return containerElements.map((element) => {
+        console.log(element)
+        const result: {
+          [key: string]: string | null
+          | undefined
+        } = {};
+        config.title.map((item) => result.title = getAttributeOrText(element, item));
+        config.image.map((item) => result.image = getAttributeOrText(element, item));
         return result;
       });
     }, config);
   }
+
 
 
   private processData(url: string, data: any[]): any[] {

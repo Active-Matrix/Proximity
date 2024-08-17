@@ -2,13 +2,29 @@ import PuppeteerScraper, { ScraperConfig } from "./Scraper";
 
 
 const config: ScraperConfig = {
-  attributeSelector: ['class'],
-  containerSelector: ['product_pod'],
-  titleSelector: ['h3'],
-  imageSelector: ['img'],
+  container: [{
+    element: 'div',
+    attribute: 'data-testid',
+    value: 'edinburgh-article',
+  }],
+  title: [
+    {
+      element: 'h2',
+      attribute: 'data-testid',
+      value: 'card-headline'
+    }
+  ],
+  image: [
+    {
+      element: 'img',
+      attribute: 'data-testid',
+      value: 'card-media',
+      resultAttribute: 'src'
+    }
+  ]
 }
 
-const url = "https://books.toscrape.com/"
+const url = "https://www.bbc.com/news"
 
 const main = async () => {
   const scraper = new PuppeteerScraper(url, config)
