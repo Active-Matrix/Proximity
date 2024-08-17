@@ -36,7 +36,7 @@ export default class PuppeteerScraper implements Scraper {
 
     await page.goto(url, { waitUntil: 'load' });
 
-    const data = await this.extractData(page, this.config);
+    const data = await this.extractData(page, this.config, []);
     const processData = this.processData(url, data)
 
     await this.closeBrowser(); //? close the browser
@@ -64,27 +64,48 @@ export default class PuppeteerScraper implements Scraper {
     }
   }
 
-  private async extractData(page: Page, config: ScraperConfig): Promise<any[]> {
+  /**
+  * Extracts data from a webpage using the provided configuration.
+  *
+  * @param page - The Puppeteer Page object representing the webpage to scrape.
+  * @param config - The ScraperConfig object containing the selectors for data extraction.
+  *
+  * @returns A Promise that resolves to an array of objects, each containing the extracted data.
+  *
+  * @remarks
+  * This function uses the `page.evaluate` method to execute JavaScript code in the browser context.
+  * It selects elements based on the provided configuration and extracts the desired data.
+  * The extracted data is then returned as an array of objects.
+  */
+
+  private async extractData(page: Page, config: ScraperConfig,
+    callbacks: Array<(element: Element, config: ScraperConfig) => string | null>): Promise<any[]> {
     return page.evaluate((config: ScraperConfig) => {
       const elements = Array.from(
         document.querySelectorAll(`[${config.attributeSelector}="${config.containerSelector}"]`)
       );
 
-      return elements.map((element) => {
-        const result: { [key: string]: string | null } = {};
-
+      const selectTitle = (element: Element, config: ScraperConfig): string | null => {
         const selectedTitle = element.querySelector(`[${config.attributeSelector}="${config.titleSelector}"]`);
-        result["title"] = selectedTitle?.getAttribute("title") ||
+        return selectedTitle?.getAttribute(config.titleSelector[0] || '') ||
           selectedTitle?.textContent?.trim() ||
           null;
+      }
 
+      const selectImage = (element: Element, config: ScraperConfig): string | null => {
         const selectedImage = element.querySelector(config.imageSelector[0] || '');
-        result["image"] = selectedImage?.getAttribute("src") || null;
+        return selectedImage?.getAttribute("src") || null;
+      }
 
+      return elements.map((element) => {
+        const result: { [key: string]: string | null } = {};
+        result.title = selectTitle(element, config);
+        result.image = selectImage(element, config);
         return result;
       });
     }, config);
   }
+
 
   private processData(url: string, data: any[]): any[] {
     return data.map(item => {
