@@ -1,34 +1,37 @@
 import PuppeteerScraper, { ScraperConfig } from "./Scraper";
-
+import fs from "node:fs"
 
 const config: ScraperConfig = {
   container: [{
     element: 'div',
-    attribute: 'data-component-name',
-    value: 'card',
+    attribute: 'data-testid',
+    value: 'edinburgh-article',
   }],
   title: [
     {
-      element: 'span',
-      attribute: 'data-editable',
-      value: 'headline',
+      element: 'h2',
+      attribute: 'data-testid',
+      value: 'card-headline'
     }
   ],
   image: [
     {
       element: 'img',
-
+      attribute: 'data-testid',
+      value: 'card-media',
       resultAttribute: 'src'
     }
   ]
 }
 
-const url = "https://edition.cnn.com/?refresh=1"
+const url = "https://www.bbc.com/news"
 
 const main = async () => {
   const scraper = new PuppeteerScraper(url, config)
   const data = await scraper.scrape();
   console.log(data);
+  fs.writeFile('./.dist/artifacts.json', JSON.stringify(data), err => {
+    console.log(err);
+  });
 }
-
-main()
+main() 

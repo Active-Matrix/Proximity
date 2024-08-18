@@ -1,6 +1,7 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 import URLParser from "../UrlParser/urlParser";
 
+//#region Type definitions
 interface ConfigProps {
   element: string;
   attribute?: string;
@@ -10,16 +11,18 @@ interface ConfigProps {
 
 export interface ScraperConfig {
   container: Omit<ConfigProps, "resultAttribute">[];
-  title: ConfigProps[];
-  image: ConfigProps[];
+  title?: ConfigProps[];
+  image?: ConfigProps[];
+  source?: ConfigProps[];
+  date?: ConfigProps[];
 }
 
 interface Scraper {
   scrape(url: string, config: ScraperConfig): Promise<any[]>;
 }
+//#endregion
 
 export default class PuppeteerScraper implements Scraper {
-
   private browser: Browser | null = null;
   private url: URLParser;
   private config: ScraperConfig;
@@ -33,34 +36,33 @@ export default class PuppeteerScraper implements Scraper {
     }
   }
 
+  /**
+ * Performs web scraping using Puppeteer and the provided configuration.
+ *
+ * @returns A Promise that resolves to an array of scraped data items.
+ *
+ * @throws Will throw an error if the browser fails to launch or close.
+ * @throws Will throw an error if the URL provided in the constructor is invalid.
+ */
   public async scrape(): Promise<any[]> {
-    await this.launchBrowser(); //? launch the browser
-
-    //? go the the URL and eq thhe data
+    await this.launchBrowser();
     const page = await this.createPage();
-    const url = this.url.getURL();
+    await page.goto(this.url.getURL(), { waitUntil: 'load' });
 
-    await page.goto(url, { waitUntil: 'load' });
+    const data = await this.extractData(page);
+    const processedData = this.processData(data);
 
-    const data = await this.extractData(page, this.config);
-    const processData = this.processData(url, data)
-
-    await this.closeBrowser(); //? close the browser
-
-    //? Return the scraped data
-    return processData;
+    await this.closeBrowser();
+    return processedData;
   }
 
-  private async launchBrowser(): Promise<Browser> {
-    return this.browser = await puppeteer.launch({
-      headless: false,
-      defaultViewport: null,
-    });
+  private async launchBrowser(): Promise<void> {
+    this.browser = await puppeteer.launch({ headless: false, defaultViewport: null });
   }
 
   private async createPage(): Promise<Page> {
     if (!this.browser) throw new Error("Browser not instantiated");
-    return await this.browser.newPage();
+    return this.browser.newPage();
   }
 
   private async closeBrowser(): Promise<void> {
@@ -71,70 +73,104 @@ export default class PuppeteerScraper implements Scraper {
   }
 
   /**
-  * Extracts data from a webpage using the provided configuration.
-  *
-  * @param page - The Puppeteer Page object representing the webpage to scrape.
-  * @param config - The ScraperConfig object containing the selectors for data extraction.
-  *
-  * @returns A Promise that resolves to an array of objects, each containing the extracted data.
-  *
-  * @remarks
-  * This function uses the `page.evaluate` method to execute JavaScript code in the browser context.
-  * It selects elements based on the provided configuration and extracts the desired data.
-  * The extracted data is then returned as an array of objects.
-  */
+ * Extracts data from a webpage using the provided configuration.
+ *
+ * @param page - The Puppeteer Page object representing the webpage to scrape.
+ *
+ * @returns A Promise that resolves to an array of scraped data items.
+ *
+ * @remarks
+ * This function uses the `page.evaluate` method to run JavaScript code in the browser context.
+ * It iterates through the provided configuration, selects elements on the webpage, and extracts
+ * data based on the specified attributes and selectors.
+ *
+ * The extracted data is then returned as an array of objects, where each object represents a
+ * data item and contains the extracted information.
+ *
+ * @throws Will throw an error if the `page` parameter is not provided.
+ */
+  // private async extractData(page: Page): Promise<any[]> {
+  //   return page.evaluate((config: ScraperConfig) => {
 
-  private async extractData(page: Page, config: ScraperConfig): Promise<any[]> {
+
+
+  //     const extractFromContainer = (element: Element): { [key: string]: string | null } => {
+  //       const result: { [key: string]: string | null } = {};
+
+  //       config.title?.forEach(item => result.title = getAttributeOrText(element, item));
+  //       // config.image?.forEach(item => result.image = getAttributeOrText(element, item));
+  //       // config.source?.forEach(item => result.source = getAttributeOrText(element, item));
+  //       // config.date?.forEach(item => result.date = getAttributeOrText(element, item));
+
+  //       return result;
+  //     };
+
+  //     // return config.container.map(containerConfig => {
+  //     //   return Array.from(
+  //     //     document.querySelectorAll(containerConfig.element)
+  //     //   ).map(extractFromContainer);
+  //     // });
+
+  //     // config.container = document.querySelectorAll(.element)
+  //     const containerConfig = document.querySelectorAll(config.container[0]?.element)
+
+  //   }, this.config);
+  // }
+
+  private async extractData(page: Page): Promise<any[]> {
     return page.evaluate((config: ScraperConfig) => {
-      function getAttributeOrText(element: Element, config: ConfigProps) {
+
+      const getAttributeOrText = (element: Element, config: ConfigProps): string | null => {
         const matchedElement = element.querySelector(config.element);
 
-        if (!matchedElement) return null
-        if (!config.resultAttribute) return matchedElement.textContent?.trim()
+        // return null if nothing matched
+        if (!matchedElement) return null;
 
-        // if attribute matches the value
+        // if no resultAttribute is provided, then return the text content of the element, 
+        // null it there is no text content
+        if (!config.resultAttribute) return matchedElement.textContent?.trim() || null;
+
+        // return the resultAttribute if it exists and the provided attribute matches its value
         if (config.attribute && config.value) {
-          if (matchedElement.getAttribute(config.attribute) === config.value)
+          if (matchedElement.getAttribute(config.attribute) === config.value) {
             return matchedElement.getAttribute(config.resultAttribute);
+          }
         }
 
-        // return result attribute
-        return matchedElement.getAttribute(config.resultAttribute)
-      }
+        // return the resultAttribute if it exists but no attributes or values present, 
+        // null if not resultAttribute is not present
+        return matchedElement.getAttribute(config.resultAttribute) || null;
+      };
 
       const containerElements = Array.from(
         document.querySelectorAll(config.container.map(({ element, attribute, value }) =>
           `${element}[${attribute}="${value}"]`
         ).join(', '))
       );
+
       return containerElements.map((element) => {
         console.log(element)
         const result: {
           [key: string]: string | null
           | undefined
         } = {};
-        config.title.map((item) => result.title = getAttributeOrText(element, item));
-        config.image.map((item) => result.image = getAttributeOrText(element, item));
+        config.title?.map((item) => result.title = getAttributeOrText(element, item));
+        config.image?.map((item) => result.image = getAttributeOrText(element, item));
         return result;
       });
-    }, config);
+    }, this.config);
   }
 
-
-
-  private processData(url: string, data: any[]): any[] {
+  private processData(data: any[]): any[] {
     return data.map(item => {
       try {
-        new URLParser(item.image);
-      }
-      catch (error) {
-        item.image = url.concat(item.image)
+        new URL(item.image); //? Validate if the image URL is absolute
+      } catch {
+        item.image = this.url.getURL().concat(item.image);  //? If not, convert it to an absolute URL
+        if (item.image === this.url.getURL()) item.image = null;
       }
 
       return item;
-    })
-
+    });
   }
-
-
 }
