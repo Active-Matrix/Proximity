@@ -47,7 +47,7 @@ describe("PuppeteerScraper with Local Server", () => {
       }],
       provider: 'TestProvider'
     };
-    scraper = new PuppeteerScraper('http://localhost:3000', mockConfig);
+    scraper = new PuppeteerScraper('http://localhost:8080', mockConfig);
   });
 
   afterAll(async () => {
@@ -60,7 +60,7 @@ describe("PuppeteerScraper with Local Server", () => {
       title: 'Sample Title',
       description: 'Sample description',
       image: 'https://dummyimage.com/300/09f/fff.png',
-      href: 'http://localhost:3000/sample-link',
+      href: 'http://localhost:8080/sample-link',
       date: '2024-01-01',
       provider: 'TestProvider',
     }]);

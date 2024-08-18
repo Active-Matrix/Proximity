@@ -7,6 +7,7 @@ const config: Config.InitialOptions = {
     '^.+\\.ts$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js'],
+  testPathIgnorePatterns: ['.dist']
 };
 
 export default config;
