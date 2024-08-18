@@ -2,10 +2,11 @@ import PuppeteerScraper, { ScraperConfig } from "./Scraper";
 import fs from "node:fs"
 
 const config: ScraperConfig = {
+  provider: "BBC",
   container: [{
     element: 'div',
     attribute: 'data-testid',
-    value: 'edinburgh-article',
+    value: 'edinburgh-card',
   }],
   title: [
     {
@@ -20,6 +21,27 @@ const config: ScraperConfig = {
       attribute: 'data-testid',
       value: 'card-media',
       resultAttribute: 'src'
+    }
+  ],
+  href: [
+    {
+      element: 'a',
+      attribute: 'data-testid',
+      value: 'internal-link',
+      resultAttribute: 'href'
+    }
+  ],
+  lastUpdated: [
+    {
+      element: 'span',
+      attribute: 'data-testid',
+      value: 'card-metadata-lastupdated',
+    }],
+  description: [
+    {
+      element: 'p',
+      attribute: 'data-testid',
+      value: 'card-description',
     }
   ]
 }

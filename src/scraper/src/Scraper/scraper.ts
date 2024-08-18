@@ -13,8 +13,10 @@ export interface ScraperConfig {
   container: Omit<ConfigProps, "resultAttribute">[];
   title?: ConfigProps[];
   image?: ConfigProps[];
-  source?: ConfigProps[];
-  date?: ConfigProps[];
+  href?: ConfigProps[];
+  lastUpdated?: ConfigProps[];
+  description?: ConfigProps[];
+  provider: string;
 }
 
 interface Scraper {
@@ -50,7 +52,7 @@ export default class PuppeteerScraper implements Scraper {
     await page.goto(this.url.getURL(), { waitUntil: 'load' });
 
     const data = await this.extractData(page);
-    const processedData = this.processData(data);
+    const processedData = this.postProcess(data);
 
     await this.closeBrowser();
     return processedData;
@@ -126,23 +128,38 @@ export default class PuppeteerScraper implements Scraper {
           [key: string]: string | null
           | undefined
         } = {};
+
         config.title?.map((item) => result.title = getAttributeOrText(element, item));
         config.image?.map((item) => result.image = getAttributeOrText(element, item));
+        config.href?.map((item) => result.href = getAttributeOrText(element, item));
+        config.lastUpdated?.map((item) => result.date = getAttributeOrText(element, item));
+        config.description?.map((item) => result.description = getAttributeOrText(element, item));
+        result.provider = config.provider;
+
         return result;
       });
     }, this.config);
   }
 
-  private processData(data: any[]): any[] {
+  private postProcess(data: any[]): any[] {
+    const host = `${this.url.getProtocol()}//${this.url.getHost()}`;
+
     return data.map(item => {
-      try {
-        new URL(item.image); //? Validate if the image URL is absolute
-      } catch {
-        item.image = this.url.getURL().concat(item.image);  //? If not, convert it to an absolute URL
-        if (item.image === this.url.getURL()) item.image = null;
-      }
+      item.image = this.ensureAbsoluteUrl(item.image, host);
+      item.href = this.ensureAbsoluteUrl(item.href, host);
 
       return item;
     });
   }
+
+  private ensureAbsoluteUrl(url: string, host: string): string | null {
+    try {
+      new URL(url);
+      return url;
+    } catch {
+      const absoluteUrl = host.concat(url);
+      return absoluteUrl === host ? null : absoluteUrl;
+    }
+  }
+
 }
