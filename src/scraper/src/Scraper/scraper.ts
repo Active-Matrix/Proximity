@@ -31,11 +31,7 @@ export default class PuppeteerScraper implements Scraper {
 
   constructor(url: string, config: ScraperConfig) {
     this.config = config;
-    try {
-      this.url = new URLParser(url);
-    } catch (error) {
-      throw new Error(`[Scraper] ${error}`);
-    }
+    this.url = new URLParser(url);
   }
 
   /**
@@ -59,7 +55,7 @@ export default class PuppeteerScraper implements Scraper {
   }
 
   private async launchBrowser(): Promise<void> {
-    this.browser = await puppeteer.launch({ headless: false, defaultViewport: null });
+    this.browser = await puppeteer.launch({ headless: true, defaultViewport: null });
   }
 
   private async createPage(): Promise<Page> {
@@ -129,6 +125,7 @@ export default class PuppeteerScraper implements Scraper {
           | undefined
         } = {};
 
+        // Iterate through the configurations and extract data
         config.title?.map((item) => result.title = getAttributeOrText(element, item));
         config.image?.map((item) => result.image = getAttributeOrText(element, item));
         config.href?.map((item) => result.href = getAttributeOrText(element, item));

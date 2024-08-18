@@ -4,8 +4,9 @@
     "inlineSourceMap": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "outDir": ".dist"
+    "outDir": ".dist",
+    "types": ["jest", "node", "puppeteer"]
   },
-  "include": ["./**/*.ts"],
+  "include": ["./**/*.ts", "src/Scraper/test/mockServer.js"],
   "exclude": ["node_modules"]
 }

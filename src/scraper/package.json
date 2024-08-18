@@ -6,19 +6,27 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "build": "tsc",
+    "test": "jest",
     "lint": "eslint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@jest/types": "^29.6.3",
     "@repo/typescript-config": "workspace:*",
+    "@types/jest": "^29.5.12",
     "@types/node": "^22.1.0",
+    "@types/puppeteer": "^7.0.4",
+    "express": "^4.19.2",
+    "fs": "0.0.1-security",
+    "jest": "^29.7.0",
+    "jest-mock": "^29.7.0",
+    "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "fs": "0.0.1-security",
     "puppeteer": "^23.0.2"
   }
 }
