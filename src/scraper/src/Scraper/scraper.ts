@@ -89,34 +89,6 @@ export default class PuppeteerScraper implements Scraper {
  *
  * @throws Will throw an error if the `page` parameter is not provided.
  */
-  // private async extractData(page: Page): Promise<any[]> {
-  //   return page.evaluate((config: ScraperConfig) => {
-
-
-
-  //     const extractFromContainer = (element: Element): { [key: string]: string | null } => {
-  //       const result: { [key: string]: string | null } = {};
-
-  //       config.title?.forEach(item => result.title = getAttributeOrText(element, item));
-  //       // config.image?.forEach(item => result.image = getAttributeOrText(element, item));
-  //       // config.source?.forEach(item => result.source = getAttributeOrText(element, item));
-  //       // config.date?.forEach(item => result.date = getAttributeOrText(element, item));
-
-  //       return result;
-  //     };
-
-  //     // return config.container.map(containerConfig => {
-  //     //   return Array.from(
-  //     //     document.querySelectorAll(containerConfig.element)
-  //     //   ).map(extractFromContainer);
-  //     // });
-
-  //     // config.container = document.querySelectorAll(.element)
-  //     const containerConfig = document.querySelectorAll(config.container[0]?.element)
-
-  //   }, this.config);
-  // }
-
   private async extractData(page: Page): Promise<any[]> {
     return page.evaluate((config: ScraperConfig) => {
 
