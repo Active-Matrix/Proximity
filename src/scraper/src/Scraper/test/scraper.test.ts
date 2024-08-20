@@ -5,8 +5,6 @@ import PuppeteerScraper, { ScraperConfig } from "..";
 describe("PuppeteerScraper with Local Server", () => {
   let scraper: PuppeteerScraper;
   let mockConfig: ScraperConfig;
-  let mockPage: Page;
-  let mockBrowser: Browser;
   let server: any;
 
   beforeAll(async () => {
@@ -57,6 +55,7 @@ describe("PuppeteerScraper with Local Server", () => {
   it("should scrape data and return processed results", async () => {
     const result = await scraper.scrape();
     expect(result).toEqual([{
+      "id": "sample-link",
       title: 'Sample Title',
       description: 'Sample description',
       image: 'https://dummyimage.com/300/09f/fff.png',

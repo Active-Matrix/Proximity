@@ -1,5 +1,7 @@
 import PuppeteerScraper, { ScraperConfig } from "./Scraper";
 import fs from "node:fs"
+import { OmitExcept } from "../utils/OmitExcept";
+import { Config } from "@jest/types";
 
 const config: ScraperConfig = {
   provider: "BBC",
@@ -49,11 +51,14 @@ const config: ScraperConfig = {
 const url = "https://www.bbc.com/news"
 
 const main = async () => {
-  const scraper = new PuppeteerScraper(url, config)
-  const data = await scraper.scrape();
-  console.log(data);
-  fs.writeFile('./.dist/artifacts.json', JSON.stringify(data), err => {
+
+  const scraper = new PuppeteerScraper(url, config);
+  const scrapedData = await scraper.scrape();
+
+  fs.writeFile('./.dist/artifacts.json', JSON.stringify(scrapedData), err => {
     console.log(err);
   });
 }
+
+
 main() 
