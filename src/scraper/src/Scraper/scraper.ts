@@ -1,6 +1,9 @@
 import puppeteer, { Browser, Page } from "puppeteer";
 import URLParser from "../UrlParser/urlParser";
 
+const chromium = require('@sparticuz/chromium');
+
+
 //#region Type definitions
 interface ConfigProps {
   element: string;
@@ -77,7 +80,12 @@ export default class PuppeteerScraper implements Scraper {
   }
 
   private async launchBrowser(): Promise<void> {
-    this.browser = await puppeteer.launch({ headless: true, defaultViewport: null });
+    this.browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
   }
 
   private async createPage(): Promise<Page> {
