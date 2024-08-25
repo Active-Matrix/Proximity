@@ -1,14 +1,13 @@
 {
-  "name": "scraper",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "start": "node .dist/src/index.js",
+    "test": "echo No Specified tests",
+    "dev": "nodemon index.ts",
     "build": "tsc",
-    "test": "jest",
-    "lint": "eslint"
+    "start": "node .dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,6 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22.1.0",
     "@types/puppeteer": "^7.0.4",
-    "fs": "0.0.1-security",
     "jest": "^29.7.0",
     "jest-mock": "^29.7.0",
     "ts-jest": "^29.2.4",
@@ -30,13 +28,11 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "@sparticuz/chromium": "^127.0.0",
+    "@prisma/client": "5.18.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsdom": "^24.1.1",
-    "node-fetch": "^3.3.2",
-    "puppeteer": "^23.0.2",
-    "puppeteer-chromium": "^0.0.0"
+    "nodemon": "^3.1.4",
+    "prisma": "^5.18.0"
   }
 }

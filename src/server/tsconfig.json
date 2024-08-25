@@ -1,0 +1,12 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "outDir": ".dist",
+    "types": ["jest", "node"]
+  },
+  "include": ["./**/*.ts", "src/Scraper/test/mockServer.js"],
+  "exclude": ["node_modules"]
+}
