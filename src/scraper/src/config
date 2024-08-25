@@ -1,44 +1,59 @@
-const config: ScraperConfig = {
-  provider: "BBC",
-  container: [{
-    element: 'div',
-    attribute: 'data-testid',
-    value: 'edinburgh-card',
-  }],
-  title: [
+{
+  "provider": "BBC",
+  "container": [
     {
-      element: 'h2',
-      attribute: 'data-testid',
-      value: 'card-headline'
+      "element": "div",
+      "attribute": "data-testid",
+      "value": "edinburgh-card"
     }
   ],
-  image: [
+  "title": [
     {
-      element: 'img',
-      attribute: 'data-testid',
-      value: 'card-media',
-      resultAttribute: 'src'
+      "element": "h2",
+      "attribute": "data-testid",
+      "value": "card-headline"
     }
   ],
-  href: [
+  "image": [
     {
-      element: 'a',
-      attribute: 'data-testid',
-      value: 'internal-link',
-      resultAttribute: 'href'
+      "element": "img",
+      "attribute": "data-testid",
+      "value": "card-media",
+      "resultAttribute": "src"
     }
   ],
-  lastUpdated: [
+  "href": [
     {
-      element: 'span',
-      attribute: 'data-testid',
-      value: 'card-metadata-lastupdated',
-    }],
-  description: [
+      "element": "a",
+      "attribute": "data-testid",
+      "value": "internal-link",
+      "resultAttribute": "href"
+    }
+  ],
+  "lastUpdated": [
     {
-      element: 'p',
-      attribute: 'data-testid',
-      value: 'card-description',
+      "element": "span",
+      "attribute": "data-testid",
+      "value": "card-metadata-lastupdated"
+    }
+  ],
+  "description": [
+    {
+      "element": "p",
+      "attribute": "data-testid",
+      "value": "card-description"
+    }
+  ],
+  "readTime": [
+    {
+      "element": "time"
+    }
+  ],
+  "tags": [
+    {
+      "element": "div",
+      "attribute": "data-testid",
+      "value": "anchor-inner-wrapper"
     }
   ]
 }

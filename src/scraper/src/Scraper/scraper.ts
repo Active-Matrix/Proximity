@@ -25,6 +25,8 @@ export interface ScraperConfig {
     image?: ConfigProps[];
     lastUpdated?: ConfigProps[];
     description?: ConfigProps[];
+    readTime: ConfigProps[];
+    tags: ConfigProps[];
   };
 }
 
@@ -248,6 +250,18 @@ export default class PuppeteerScraper implements Scraper {
             result.description = getAttributeOrText(matchedElement, item);
           }
         });
+        config.subPageConfig?.readTime?.map((item) => {
+          const matchedElement = document.querySelector(item.element);
+          if (matchedElement) {
+            result.readTime = getAttributeOrText(matchedElement, item);
+          }
+        });
+        config.subPageConfig?.tags?.map((item) => {
+          const matchedElement = document.querySelector(item.element);
+          if (matchedElement) {
+            result.tags = getAttributeOrText(matchedElement, item);
+          }
+        })
 
         return result;
       }, this.config);

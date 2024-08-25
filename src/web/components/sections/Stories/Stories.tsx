@@ -22,7 +22,11 @@ const Stories = () => {
       setIsPreviewLoading(true);
       const res = await getAllStories();
       setStories(res);
-      selectedSourceID === '' && setSelectedSourceID(res[0].id);
+
+      if (res.length > 0) {
+        selectedSourceID === '' && setSelectedSourceID(res[0].id);
+      }
+
       setIsPreviewLoading(false);
     };
     fetchStories();

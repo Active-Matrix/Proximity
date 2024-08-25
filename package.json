@@ -4,8 +4,11 @@
   "scripts": {
     "build": "turbo build",
     "build:web": "pnpm --recursive --filter=web build",
+    "build:scraper": "pnpm --recursive --filter=scraper build",
     "dev": "turbo dev",
     "dev:web": "pnpm --recursive --filter=web dev",
+    "start": "terbo start",
+    "start:scraper": "pnpm --recursive --filter=scraper start",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi ",
     "lint": "turbo lint",
