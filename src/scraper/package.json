@@ -34,7 +34,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsdom": "^24.1.1",
+    "jsdom": "^25.0.0",
     "node-fetch": "^3.3.2",
     "puppeteer": "^23.0.2",
     "puppeteer-chromium": "^0.0.0"
