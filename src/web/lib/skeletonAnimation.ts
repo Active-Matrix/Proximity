@@ -1,1 +1,0 @@
-export const animate = 'bg-slate-200 animate-pulse duration-[.5ms]';

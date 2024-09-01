@@ -1,8 +1,0 @@
-[
-  {
-    "id": "com.activematrix.proximity",
-    "title": "Proximity",
-    "url": "http://localhost:3000/",
-    "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/page/com.activematrix.proximity"
-  }
-]
