@@ -32,7 +32,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          'min-h-screen max-w-[100vw] relative overflow-x-hidden font-sans antialiased lg:px-[3vw] lg:pt-4',
+          'min-h-screen max-w-[100vw] relative overflow-x-hidden font-sans antialiased lg:px-[3vw] lg:pt-4 ',
           fontSans.variable
         )}
       >
