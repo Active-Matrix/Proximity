@@ -258,8 +258,8 @@ importers:
         specifier: ^18
         version: 18.3.1(react@18.3.1)
       serwist:
-        specifier: ^9.0.3
-        version: 9.0.5(typescript@5.5.4)
+        specifier: ^9.0.7
+        version: 9.0.7(typescript@5.5.4)
       tailwind-merge:
         specifier: ^2.4.0
         version: 2.5.2
@@ -8443,6 +8443,18 @@ packages:
 
   /serwist@9.0.5(typescript@5.5.4):
     resolution: {integrity: sha512-N2pf50MxsqHtL14FaLndXE2sbVvuBhyidruLvDrKIwGM0SOCTDBnWNnykLkgw1nDv4XEVgzqKtm8v1fdngPKtg==}
+    peerDependencies:
+      typescript: '>=5.0.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      idb: 8.0.0
+      typescript: 5.5.4
+    dev: false
+
+  /serwist@9.0.7(typescript@5.5.4):
+    resolution: {integrity: sha512-OcvOArMLFYhPWpK5LKqmSsyCS71Egn8SkUZQRBQVUJmAtsI3Aj+ixNDeEvUgyYtFArtvHsVRXgfdg4L5LkhAHA==}
     peerDependencies:
       typescript: '>=5.0.0'
     peerDependenciesMeta:
