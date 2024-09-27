@@ -24,7 +24,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@serwist/next": "^9.0.3",
+    "@serwist/next": "^9.0.8",
     "axios": "^1.7.7",
     "axios-cache-interceptor": "^1.5.3",
     "class-variance-authority": "^0.7.0",
